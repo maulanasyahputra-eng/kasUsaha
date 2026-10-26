@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- WARNA PUTIH -->
+    <solid android:color="#FFFFFF" />
+
+    <!-- BORDER ABU-ABU TIPIS -->
+    <stroke
+        android:width="1dp"
+        android:color="#E2E8F0" />
+
+    <!-- SUDUT MEMBULAT -->
+    <corners android:radius="10dp" />
+
+    <!-- JARAK DALAM -->
+    <padding
+        android:left="8dp"
+        android:top="4dp"
+        android:right="8dp"
+        android:bottom="4dp" />
+
+</shape>
