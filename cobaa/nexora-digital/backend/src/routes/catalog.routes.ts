@@ -27,6 +27,15 @@ router.get('/products', async (req, res, next) => {
     if (search) where.name = { contains: search };
     if (category) where.category = { slug: category };
     if (type === 'TOPUP' || type === 'SMM') where.type = type;
+    // Filter harga (backend-computed, tidak pernah dari client-side math)
+    const minPrice = Number(req.query.minPrice ?? 0);
+    const maxPrice = Number(req.query.maxPrice ?? 0);
+    if (minPrice > 0 || maxPrice > 0) {
+      where.sellPrice = {
+        ...(minPrice > 0 ? { gte: minPrice } : {}),
+        ...(maxPrice > 0 ? { lte: maxPrice } : {}),
+      };
+    }
 
     const orderBy =
       sort === 'price_asc' ? { sellPrice: 'asc' as const } :

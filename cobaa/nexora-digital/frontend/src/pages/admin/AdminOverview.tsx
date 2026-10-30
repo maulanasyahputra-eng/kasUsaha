@@ -85,7 +85,7 @@ export default function AdminOverview() {
               className="flex flex-1 flex-col items-center gap-1"
             >
               <div
-                className="w-full rounded-t bg-gradient-to-t from-neon-deep to-neon transition-all"
+                className="w-full rounded-t bg-gradient-to-t from-neon to-neon transition-all"
                 style={{
                   height: `${Math.max(4, (c.total / maxDaily) * 100)}%`,
                 }}

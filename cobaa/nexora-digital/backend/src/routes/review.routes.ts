@@ -6,6 +6,24 @@ import { requireAuth, requireAdmin } from '../middleware/auth';
 
 const router = Router();
 
+/** Ulasan unggulan publik untuk homepage (rating tertinggi, ada komentar). */
+router.get('/featured', async (_req, res, next) => {
+  try {
+    const reviews = await prisma.review.findMany({
+      where: { status: 'PUBLISHED', comment: { not: null } },
+      orderBy: [{ rating: 'desc' }, { createdAt: 'desc' }],
+      take: 6,
+      include: { user: { select: { name: true } }, product: { select: { name: true } } },
+    });
+    res.json({
+      reviews: reviews.map((r) => ({
+        id: r.id, rating: r.rating, comment: r.comment,
+        name: r.user.name.split(' ')[0], product: r.product.name, createdAt: r.createdAt,
+      })),
+    });
+  } catch (e) { next(e); }
+});
+
 /** Ulasan publik per produk */
 router.get('/products/:productId', async (req, res, next) => {
   try {
