@@ -87,9 +87,46 @@ export function providerIsConfigured(code: string): boolean {
 }
 
 /** Sinkronisasi katalog Digiflazz (prepaid) ke tabel Product — runtime credential dari DB/env. */
+// Sinkronisasi katalog Digiflazz (prepaid) — dgn mapping gambar brand (logo lokal)
+// Mapping gambar brand → aset lokal (SVG placeholder; ganti dengan logo resmi .png di /public)
+const BRAND_IMAGE: Record<string, string> = {
+  'MOBILE LEGENDS': '/images/games/mobile-legends.svg',
+  'FREE FIRE': '/images/games/free-fire.svg',
+  'PUBG MOBILE': '/images/games/pubg-mobile.svg',
+  'HONOR OF KINGS': '/images/games/honor-of-kings.svg',
+  'VALORANT': '/images/games/valorant.svg',
+  'ROBLOX': '/images/games/roblox.svg',
+  'GENSHIN IMPACT': '/images/games/genshin-impact.svg',
+  'POINT BLANK': '/images/games/point-blank.svg',
+  'CALL OF DUTY': '/images/games/call-of-duty.svg',
+  'ARENA OF VALOR': '/images/games/arena-of-valor.svg',
+  'LIFE AFTER': '/images/games/life-after.svg',
+  'LORDS MOBILE': '/images/games/lords-mobile.svg',
+  'RAGNAROK M': '/images/games/ragnarok.svg',
+  'SAINT SEIYA': '/images/games/saint-seiya.svg',
+  'TELKOMSEL': '/images/providers/telkomsel.svg',
+  'INDOSAT': '/images/providers/indosat.svg',
+  'XL': '/images/providers/xl.svg',
+  'AXIS': '/images/providers/axis.svg',
+  'TRI': '/images/providers/tri.svg',
+  'SMARTFREN': '/images/providers/smartfren.svg',
+  'BY.U': '/images/providers/byu.svg',
+  'PLN': '/images/providers/pln.svg',
+  'DANA': '/images/providers/dana.svg',
+  'GO PAY': '/images/providers/gopay.svg',
+  'OVO': '/images/providers/ovo.svg',
+  'SHOPEE PAY': '/images/providers/shopeepay.svg',
+  'K-VISION dan GOL': '/images/providers/kvision.svg',
+  'PERTAMINA GAS': '/images/providers/pertamina.svg',
+};
+
+export function brandImage(brand: string): string | null {
+  return BRAND_IMAGE[brand.toUpperCase()] ?? null;
+}
+
 export async function syncDigiflazzCatalog() {
   const df = await getProviderAsync('DIGIFLAZZ') as DigiflazzProvider;
-  let res;
+  let res: unknown;
   try {
     res = await df.getServices();
   } catch (e) {
@@ -102,15 +139,14 @@ export async function syncDigiflazzCatalog() {
     update: {},
     create: { code: 'DIGIFLAZZ', name: 'Digiflazz', isActive: true, priority: 10 },
   });
-  const df2 = getProvider('DIGIFLAZZ') as DigiflazzProvider;
-  void df2;
-  const items = (res?.data ?? []) as Array<Record<string, unknown>>;
+  // res.data = { data: [...items], pagination } — flatten brand & pakai buyer_product_status
+  const d = res as { data?: unknown } | unknown[];
+  const items = (Array.isArray(d) ? d : Array.isArray(d.data) ? d.data : []) as Array<Record<string, unknown>>;
   let synced = 0;
   for (const item of items) {
     const sku = String(item.buyer_sku_code ?? '');
     const brand = String(item.brand ?? 'Lainnya');
     const price = Number(item.price ?? 0);
-    const statusTx = String(item.status ?? '');
     if (!sku || !price) continue;
     const slug = `digiflazz-${sku.toLowerCase()}`;
     const category = await prisma.category.upsert({
@@ -118,20 +154,21 @@ export async function syncDigiflazzCatalog() {
       update: {},
       create: { slug: `dgf-${brand.toLowerCase().replace(/\s+/g, '-')}`, name: brand, type: 'TOPUP' },
     });
-    const active = statusTx !== 'Gagal';
+    const active = item.buyer_product_status === true && item.seller_product_status !== false;
+    const image = brandImage(brand);
     const existing = await prisma.product.findUnique({ where: { slug } });
     const sellPrice = Math.ceil(price * 1.05); // margin default 5%, dapat diubah admin
     if (existing) {
       await prisma.product.update({
         where: { slug },
-        data: { costPrice: price, isActive: active, providerSku: sku, providerId: provider.id },
+        data: { costPrice: price, isActive: active, providerSku: sku, providerId: provider.id, ...(image ? { imageUrl: image } : {}) },
       });
     } else {
       await prisma.product.create({
         data: {
           slug, name: String(item.product_name ?? sku), type: 'TOPUP',
           categoryId: category.id, providerId: provider.id, providerSku: sku,
-          costPrice: price, sellPrice, isActive: active,
+          costPrice: price, sellPrice, isActive: active, imageUrl: image,
         },
       });
     }

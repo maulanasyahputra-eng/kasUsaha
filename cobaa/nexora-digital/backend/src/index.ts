@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -11,6 +12,7 @@ import paymentRoutes from './routes/payment.routes';
 import accountRoutes from './routes/account.routes';
 import adminRoutes from './routes/admin.routes';
 import reviewRoutes from './routes/review.routes';
+import bannerRoutes from './routes/banner.routes';
 
 assertRequiredSecrets();
 
@@ -75,6 +77,10 @@ app.use('/api/webhooks', paymentRoutes);
 app.use('/api/account', accountRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/banners', bannerRoutes);
+
+// Static uploads (gambar banner) — read-only
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), { maxAge: '7d' }));
 
 app.use((_req, res) => res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Endpoint tidak ditemukan.' } }));
 app.use(errorHandler);

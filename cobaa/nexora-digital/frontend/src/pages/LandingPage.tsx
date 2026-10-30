@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import {
   Search, Gamepad2, Share2, ShieldCheck, Zap, Sparkles, MousePointerClick,
-  CreditCard, ListChecks, ChevronDown, Star, Package, Users, TrendingUp, ArrowRight,
+  CreditCard, ListChecks, ChevronDown, Star, Package, TrendingUp, ArrowRight,
 } from 'lucide-react';
+import BannerCarousel from '../components/BannerCarousel';
 import { api } from '../lib/api';
-import { Skeleton, rupiah } from '../components/ui';
+import { rupiah } from '../components/ui';
 
 interface Product {
   id: string; slug: string; name: string; sellPrice: number; type: string; imageUrl?: string | null;
@@ -239,8 +240,7 @@ export default function LandingPage() {
     <div>
       <Hero stats={stats} />
 
-      {/* trust indicators non-numerik + status provider */}
-      <TrustStrip />
+      <BannerCarousel />
 
       {cats.length > 0 && <Categories cats={cats} />}
 
@@ -264,22 +264,6 @@ export default function LandingPage() {
             {(prodData?.products ?? []).map((p) => <ProductCard key={p.id} p={p} />)}
           </div>
         )}
-      </section>
-
-      {/* Promo banner */}
-      <section className="mx-auto max-w-6xl px-4 py-6">
-        <div className="relative overflow-hidden rounded-3xl border border-neon/20 bg-gradient-to-r from-ink-800 via-ink-850 to-ink-900 p-8 md:p-12">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-neon/25 blur-[90px]" />
-          <div className="pointer-events-none absolute -bottom-10 left-10 h-32 w-32 rounded-full bg-cyanx/10 blur-[70px]" />
-          <div className="relative flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-neon-soft">Promo & Penawaran</p>
-              <h3 className="mt-2 text-2xl font-extrabold text-white md:text-3xl">Your Favorite Games. Better Deals.</h3>
-              <p className="mt-2 max-w-md text-sm text-zinc-400">Harga kompetitif dari katalog provider resmi — diperbarui berkala oleh tim kami.</p>
-            </div>
-            <Link to="/kategori?filter=TOPUP" className="btn-primary shrink-0 !px-7 !py-3">Mulai Sekarang <ArrowRight className="h-4 w-4" /></Link>
-          </div>
-        </div>
       </section>
 
       {/* Why choose */}
@@ -313,29 +297,3 @@ export default function LandingPage() {
   );
 }
 
-/* ---------- TRUST STRIP (provider status + pengguna, non-numerik) ---------- */
-function TrustStrip() {
-  const { data: status } = useQuery({
-    queryKey: ['status'],
-    queryFn: async () => (await api.get('/status')).data as { providers: { code: string; name: string }[]; mode: string },
-  });
-  const { data: catsData } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => (await api.get('/categories')).data.categories as Category[],
-  });
-  void catsData;
-  return (
-    <section className="mx-auto max-w-6xl px-4">
-      <div className="glass-card flex flex-wrap items-center justify-center gap-x-6 gap-y-3 px-6 py-4 text-sm">
-        {(status?.providers ?? []).map((p) => (
-          <span key={p.code} className="flex items-center gap-1.5 text-zinc-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />{p.name}
-          </span>
-        ))}
-        <span className="text-xs text-zinc-600">
-          Mode: {status?.mode === 'production' ? 'PRODUCTION' : 'DEVELOPMENT'}
-        </span>
-      </div>
-    </section>
-  );
-}

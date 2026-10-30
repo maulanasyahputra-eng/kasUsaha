@@ -484,6 +484,24 @@ model ProviderLog {
   @@index([providerId, createdAt])
 }
 
+// Banner promosi dinamis untuk storefront homepage
+model BannerPromo {
+  id          String    @id @default(cuid())
+  title       String    @db.Text
+  subtitle    String?   @db.Text
+  image       String    @db.Text // path publik: /uploads/banners/<file>
+  buttonText  String?
+  buttonUrl   String?   @db.Text
+  sortOrder   Int       @default(0)
+  isActive    Boolean   @default(true)
+  startAt     DateTime?
+  endAt       DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([isActive, sortOrder])
+}
+
 enum ReviewStatus {
   PENDING
   PUBLISHED

@@ -29,6 +29,7 @@ import AdminCoupons from "./pages/admin/AdminCoupons";
 import AdminRefunds from "./pages/admin/AdminRefunds";
 import AdminReports from "./pages/admin/AdminReports";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminBanners from "./pages/admin/AdminBanners";
 import AdminAudit from "./pages/admin/AdminAudit";
 import AdminSync from "./pages/admin/AdminSync";
 import AdminReviews from "./pages/admin/AdminReviews";
@@ -67,6 +68,7 @@ export function AppRoutes() {
             <Route path="reports" element={<AdminReports />} />
             <Route path="settings" element={<AdminSettings />} />
             <Route path="audit" element={<AdminAudit />} />
+            <Route path="banners" element={<AdminBanners />} />
             <Route path="sync" element={<AdminSync />} />
             <Route path="reviews" element={<AdminReviews />} />
           </Route>
