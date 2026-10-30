@@ -6,42 +6,73 @@ import { SimulationProvider } from './base-provider';
 import { BaseProvider } from './base-provider';
 import { config } from '../config';
 import { logger } from '../config';
+import { decryptSecret } from '../services/crypto.service';
 
-let digiflazzInstance: DigiflazzProvider | null = null;
-let sosmedmediaInstance: SosmedmediaProvider | null = null;
-const simulationInstance = new SimulationProvider({});
-
-function getDigiflazz(): DigiflazzProvider {
-  if (!digiflazzInstance) {
-    digiflazzInstance = new DigiflazzProvider({
-      baseUrl: config.digiflazz.baseUrl,
-      apiKey: config.digiflazz.apiKey,
-      username: config.digiflazz.username,
-      testing: config.nodeEnv !== 'production' && process.env.DIGIFLAZZ_TESTING === 'true',
-    });
+/**
+ * Runtime config dari DB (ProviderCredential terenkripsi) dengan fallback env.
+ * Tidak di-cache agresif: admin bisa mengubah credential kapan pun.
+ */
+async function resolveRuntime(code: string): Promise<BaseProvider['cfg']> {
+  const p = await prisma.provider.findUnique({ where: { code }, include: { credential: true } });
+  const cfg: BaseProvider['cfg'] = {};
+  const cred = p?.credential;
+  if (cred) {
+    cfg.baseUrl = cred.baseUrl ?? undefined;
+    cfg.username = cred.username ?? undefined;
+    try { cfg.apiKey = cred.apiKeyEnc ? decryptSecret(cred.apiKeyEnc) : undefined; } catch { /* korup → fallback */ }
+    try { cfg.apiSecret = cred.apiSecretEnc ? decryptSecret(cred.apiSecretEnc) : undefined; } catch { /* korup */ }
+    cfg.environment = (cred.environment as 'sandbox' | 'production') ?? 'sandbox';
   }
-  return digiflazzInstance;
+  // Fallback env bila DB belum berisi field tsb
+  if (code === 'DIGIFLAZZ') {
+    cfg.baseUrl = cfg.baseUrl || config.digiflazz.baseUrl || undefined;
+    cfg.username = cfg.username || config.digiflazz.username || undefined;
+    cfg.apiKey = cfg.apiKey || config.digiflazz.apiKey || undefined;
+    cfg.testing = config.nodeEnv !== 'production' && process.env.DIGIFLAZZ_TESTING === 'true';
+  } else if (code === 'SOSMEDMEDIA') {
+    cfg.baseUrl = cfg.baseUrl || config.sosmedmedia.baseUrl || undefined;
+    cfg.apiKey = cfg.apiKey || config.sosmedmedia.apiKey || undefined;
+  }
+  return cfg;
 }
 
-function getSosmedmedia(): SosmedmediaProvider {
-  if (!sosmedmediaInstance) {
-    sosmedmediaInstance = new SosmedmediaProvider({
-      baseUrl: config.sosmedmedia.baseUrl,
-      apiKey: config.sosmedmedia.apiKey,
-    });
+async function getProviderAsync(code: string): Promise<BaseProvider> {
+  const cfg = await resolveRuntime(code);
+  switch (code) {
+    case 'DIGIFLAZZ': return new DigiflazzProvider(cfg);
+    case 'SOSMEDMEDIA': return new SosmedmediaProvider(cfg);
+    case 'SIMULATION': return new SimulationProvider(cfg);
+    default: throw new AppError(500, 'PROVIDER_UNKNOWN', `Provider tidak dikenal: ${code}`);
   }
-  return sosmedmediaInstance;
 }
 
-/** Registry: provider baru cukup didaftarkan di sini tanpa mengubah logika order. */
+/** Registry sync (blocking). Untuk async runtime config gunakan getProviderAsync(). */
 export function getProvider(code: string): BaseProvider {
   switch (code) {
-    case 'DIGIFLAZZ': return getDigiflazz();
-    case 'SOSMEDMEDIA': return getSosmedmedia();
-    case 'SIMULATION': return simulationInstance;
+    case 'DIGIFLAZZ': return new DigiflazzProvider({
+      baseUrl: config.digiflazz.baseUrl || undefined,
+      apiKey: config.digiflazz.apiKey || undefined,
+      username: config.digiflazz.username || undefined,
+      testing: config.nodeEnv !== 'production' && process.env.DIGIFLAZZ_TESTING === 'true',
+    });
+    case 'SOSMEDMEDIA': return new SosmedmediaProvider({
+      baseUrl: config.sosmedmedia.baseUrl || undefined,
+      apiKey: config.sosmedmedia.apiKey || undefined,
+    });
+    case 'SIMULATION': return new SimulationProvider({});
     default:
       throw new AppError(500, 'PROVIDER_UNKNOWN', `Provider tidak dikenal: ${code}`);
   }
+}
+
+/** Provider dengan runtime config ter-dekripsi dari DB (fallback env). */
+export { getProviderAsync };
+
+export async function providerIsConfiguredDb(code: string): Promise<boolean> {
+  try {
+    const cfg = await resolveRuntime(code);
+    return Boolean(cfg.baseUrl && (cfg.apiKey || cfg.username));
+  } catch { return false; }
 }
 
 export function providerIsConfigured(code: string): boolean {
@@ -55,19 +86,24 @@ export function providerIsConfigured(code: string): boolean {
   }
 }
 
-/** Sinkronisasi katalog Digiflazz (prepaid) ke tabel Product — hanya produk prepaid. */
+/** Sinkronisasi katalog Digiflazz (prepaid) ke tabel Product — runtime credential dari DB/env. */
 export async function syncDigiflazzCatalog() {
-  if (!providerIsConfigured('DIGIFLAZZ')) {
-    logger.warn('Sinkronisasi Digiflazz dilewati: kredensial belum tersedia.');
-    return { synced: 0, skipped: 'NOT_CONFIGURED' };
+  const df = await getProviderAsync('DIGIFLAZZ') as DigiflazzProvider;
+  let res;
+  try {
+    res = await df.getServices();
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : 'unknown';
+    logger.error({ err: msg }, 'Sinkronisasi Digiflazz gagal');
+    return { synced: 0, error: msg.slice(0, 200) };
   }
   const provider = await prisma.provider.upsert({
     where: { code: 'DIGIFLAZZ' },
     update: {},
     create: { code: 'DIGIFLAZZ', name: 'Digiflazz', isActive: true, priority: 10 },
   });
-  const df = getProvider('DIGIFLAZZ') as DigiflazzProvider;
-  const res = await df.getServices();
+  const df2 = getProvider('DIGIFLAZZ') as DigiflazzProvider;
+  void df2;
   const items = (res?.data ?? []) as Array<Record<string, unknown>>;
   let synced = 0;
   for (const item of items) {

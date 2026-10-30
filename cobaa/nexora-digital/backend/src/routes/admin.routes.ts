@@ -308,8 +308,12 @@ router.post('/providers/:code/test-connection', async (req, res, next) => {
 router.post('/providers/:code/connect', validate(credSchema), async (req, res, next) => {
   try {
     const svc = await import('../services/provider-management.service');
+    const { getProviderAsync } = await import('../providers/provider-registry');
     const saved = await svc.saveProviderCredential(req.params.code, req.body, req.user!.id);
-    const result = await svc.testProviderConnection(req.params.code);
+    const cfg = await svc.runtimeConfig(req.params.code);
+    const provider = await getProviderAsync(req.params.code);
+    (provider as unknown as { cfg: unknown }).cfg = cfg;
+    const result = await provider.testConnection();
     res.json({ saved, connection: result });
   } catch (e) {
     const message = e instanceof Error ? e.message : 'unknown';
