@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="78dp"
+
+    android:background="?android:attr/selectableItemBackground">
+
+
+    <!-- =========================================
+         AVATAR BULAT
+    ========================================== -->
+
+    <ImageView
+        android:id="@+id/avatarImage"
+
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+
+        android:layout_marginStart="14dp"
+
+        android:background="@drawable/bg_avatar_circle"
+
+        android:clipToOutline="true"
+
+        android:contentDescription="Avatar"
+
+        android:padding="0dp"
+
+        android:scaleType="centerCrop"
+
+        android:src="@drawable/ic_launcher_foreground"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- =========================================
+         ONLINE DOT
+    ========================================== -->
+
+    <View
+        android:id="@+id/onlineDot"
+
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+
+        android:background="@drawable/bg_online_dot"
+
+        android:elevation="2dp"
+
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toBottomOf="@id/avatarImage"
+        app:layout_constraintEnd_toEndOf="@id/avatarImage" />
+
+
+    <!-- =========================================
+         TIME
+    ========================================== -->
+
+    <TextView
+        android:id="@+id/timeText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="16dp"
+
+        android:text="12:35"
+
+        android:textColor="#8A8A8A"
+
+        android:textSize="11sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/nameText" />
+
+
+    <!-- =========================================
+         NAME
+    ========================================== -->
+
+    <TextView
+        android:id="@+id/nameText"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="8dp"
+
+        android:ellipsize="end"
+        android:maxLines="1"
+
+        android:text="Pengguna ChatKu"
+
+        android:textColor="#222222"
+
+        android:textSize="16sp"
+
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toStartOf="@id/timeText"
+        app:layout_constraintStart_toEndOf="@id/avatarImage"
+        app:layout_constraintTop_toTopOf="@id/avatarImage" />
+
+
+    <!-- =========================================
+         VERIFIED
+    ========================================== -->
+
+    <TextView
+        android:id="@+id/verifiedText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="4dp"
+
+        android:text="✓"
+
+        android:textColor="#229ED9"
+
+        android:textSize="14sp"
+
+        android:textStyle="bold"
+
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toBottomOf="@id/nameText"
+        app:layout_constraintStart_toEndOf="@id/nameText"
+        app:layout_constraintTop_toTopOf="@id/nameText" />
+
+
+    <!-- =========================================
+         LAST MESSAGE
+    ========================================== -->
+
+    <TextView
+        android:id="@+id/lastMessageText"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+
+        android:ellipsize="end"
+        android:maxLines="1"
+
+        android:text="Belum ada pesan"
+
+        android:textColor="#8A8A8A"
+
+        android:textSize="14sp"
+
+        app:layout_constraintEnd_toStartOf="@id/unreadBadge"
+        app:layout_constraintStart_toEndOf="@id/avatarImage"
+        app:layout_constraintTop_toBottomOf="@id/nameText" />
+
+
+    <!-- =========================================
+         UNREAD BADGE
+    ========================================== -->
+
+    <TextView
+        android:id="@+id/unreadBadge"
+
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+
+        android:layout_marginEnd="16dp"
+
+        android:gravity="center"
+
+        android:includeFontPadding="false"
+
+        android:text="1"
+
+        android:textColor="#FFFFFF"
+
+        android:textSize="11sp"
+
+        android:textStyle="bold"
+
+        android:background="@drawable/bg_unread_badge"
+
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toBottomOf="@id/lastMessageText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lastMessageText" />
+
+
+    <!-- =========================================
+         DIVIDER
+    ========================================== -->
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+
+        android:layout_marginStart="81dp"
+
+        android:background="#EEEEEE"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

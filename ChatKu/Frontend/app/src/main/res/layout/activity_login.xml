@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+
+        android:gravity="center"
+
+        android:padding="28dp">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="ChatKu"
+
+            android:textSize="38sp"
+
+            android:textStyle="bold"
+
+            android:layout_marginBottom="8dp"/>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Chat cepat, aman dan realtime"
+
+            android:textSize="16sp"
+
+            android:layout_marginBottom="45dp"/>
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Nomor Ponsel"
+
+            android:textStyle="bold"
+
+            android:layout_marginBottom="8dp"/>
+
+
+        <EditText
+
+            android:id="@+id/phoneInput"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Contoh: 081234567890"
+
+            android:inputType="phone"
+
+            android:padding="16dp"/>
+
+
+        <Button
+
+            android:id="@+id/sendOtpButton"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Kirim Kode OTP"
+
+            android:textAllCaps="false"
+
+            android:layout_marginTop="22dp"/>
+
+
+        <ProgressBar
+
+            android:id="@+id/progressBar"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:visibility="gone"
+
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

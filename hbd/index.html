@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061526">
+
+<title>Happy Birthday, Muhammad Harsyah ⚓</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --navy:#061526;
+    --navy2:#0a2038;
+    --navy3:#102e4d;
+    --blue:#174a70;
+    --cyan:#69d9ed;
+    --cyan2:#b7f2ff;
+    --gold:#e8bd71;
+    --gold2:#ffe3a5;
+    --white:#f3f8ff;
+    --muted:#a8bdcf;
+    --line:rgba(183,242,255,.17);
+    --glass:rgba(8,28,48,.91);
+    --shadow:0 30px 100px rgba(0,0,0,.4);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:65px 15px 25px;
+    overflow-x:hidden;
+    color:var(--white);
+    background:
+        radial-gradient(ellipse at 50% 110%,rgba(19,91,128,.28),transparent 55%),
+        radial-gradient(ellipse at 5% 5%,rgba(35,100,141,.17),transparent 40%),
+        linear-gradient(150deg,#030c17,#071b30 55%,#04101e);
+    font-family:"DM Sans",sans-serif;
+}
+
+button{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+::selection{background:var(--gold);color:var(--navy)}
+
+#oceanCanvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+}
+
+.ambient{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.12;
+    pointer-events:none;
+    z-index:0;
+    animation:ambientFloat 12s ease-in-out infinite alternate;
+}
+
+.ambient.one{background:#2388ba;left:-120px;top:10%}
+.ambient.two{background:#c69b55;right:-120px;bottom:5%;animation-delay:-5s}
+
+@keyframes ambientFloat{
+    to{transform:translate(35px,-25px) scale(1.2)}
+}
+
+/* MUSIC */
+
+.music-player{
+    position:fixed;
+    top:17px;
+    right:17px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 13px;
+    border:1px solid var(--line);
+    border-radius:50px;
+    background:rgba(5,20,35,.85);
+    backdrop-filter:blur(18px);
+}
+
+.music-button{
+    width:35px;
+    height:35px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(232,189,113,.5);
+    border-radius:50%;
+    color:var(--gold2);
+    background:rgba(232,189,113,.1);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.music-button:hover{transform:rotate(15deg);background:rgba(232,189,113,.2)}
+
+.music-label{
+    color:var(--cyan2);
+    font-size:9px;
+    letter-spacing:1.5px;
+}
+
+.music-bars{display:flex;align-items:center;gap:3px;height:15px;margin-top:4px}
+.music-bars span{width:3px;height:4px;border-radius:5px;background:var(--gold)}
+.music-bars.playing span{animation:wave .65s ease-in-out infinite alternate}
+.music-bars span:nth-child(2){animation-delay:.15s}
+.music-bars span:nth-child(3){animation-delay:.3s}
+.music-bars span:nth-child(4){animation-delay:.45s}
+
+@keyframes wave{to{height:14px}}
+
+/* MAIN CARD */
+
+.card{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    max-width:760px;
+    height:min(790px,calc(100dvh - 110px));
+    min-height:570px;
+    padding:30px 34px 22px;
+    overflow:hidden;
+    border:1px solid rgba(183,242,255,.2);
+    border-radius:24px;
+    background:
+        linear-gradient(145deg,rgba(13,40,64,.96),rgba(4,17,31,.97));
+    box-shadow:var(--shadow),inset 0 1px rgba(255,255,255,.035);
+    backdrop-filter:blur(22px);
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    left:12%;
+    top:0;
+    width:76%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),var(--cyan),transparent);
+}
+
+.card:after{
+    content:"✦  ⚓  ✦";
+    position:absolute;
+    top:13px;
+    left:17px;
+    color:rgba(232,189,113,.45);
+    font-size:10px;
+    letter-spacing:5px;
+    pointer-events:none;
+}
+
+/* PROGRESS */
+
+.progress-area{flex-shrink:0;margin-bottom:22px}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:10px;
+    color:var(--muted);
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.progress-info span:last-child{color:var(--gold)}
+
+.progress-track{
+    height:3px;
+    overflow:hidden;
+    border-radius:10px;
+    background:rgba(255,255,255,.08);
+}
+
+.progress-bar{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,var(--blue),var(--cyan),var(--gold));
+    transition:width .5s ease;
+}
+
+/* SLIDES */
+
+.slides-wrapper{position:relative;flex:1;min-height:0}
+
+.slide{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:10px 9px 18px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+    transition:opacity .4s ease,transform .4s ease,visibility .4s;
+    scrollbar-width:thin;
+    scrollbar-color:var(--blue) transparent;
+}
+
+.slide.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    z-index:2;
+}
+
+.slide-content{width:100%;max-width:570px;margin:auto 0;text-align:center}
+
+.slide::-webkit-scrollbar{width:4px}
+.slide::-webkit-scrollbar-thumb{background:var(--blue);border-radius:10px}
+
+/* TEXT */
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin-bottom:16px;
+    color:var(--cyan);
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:2.7px;
+    text-transform:uppercase;
+}
+
+.eyebrow:before,.eyebrow:after{
+    content:"";
+    display:block;
+    width:20px;
+    height:1px;
+    background:var(--gold);
+    opacity:.7;
+}
+
+.title{
+    margin-bottom:17px;
+    color:var(--white);
+    font-family:"Playfair Display",serif;
+    font-size:clamp(27px,5vw,43px);
+    font-weight:500;
+    line-height:1.28;
+    overflow-wrap:anywhere;
+}
+
+.gold{color:var(--gold2);font-style:italic}
+.cyan{color:var(--cyan2)}
+
+.script{
+    margin-bottom:17px;
+    color:var(--gold2);
+    font-family:"Playfair Display",serif;
+    font-size:clamp(29px,6vw,43px);
+    font-style:italic;
+    font-weight:400;
+}
+
+.description{
+    max-width:490px;
+    margin:0 auto 15px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.95;
+}
+
+.description strong{color:var(--cyan2)}
+.small-note{color:#829bb1;font-size:9px;line-height:1.8}
+
+.divider{
+    width:80px;
+    height:1px;
+    margin:19px auto;
+    background:linear-gradient(90deg,transparent,var(--gold),var(--cyan),transparent);
+}
+
+/* BUTTONS */
+
+.button-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:21px;
+}
+
+.btn{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    gap:9px;
+    min-height:43px;
+    padding:12px 21px;
+    border:1px solid transparent;
+    border-radius:6px;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.7px;
+    cursor:pointer;
+    transition:transform .25s,background .25s,box-shadow .25s;
+}
+
+.btn:hover:not(:disabled){transform:translateY(-3px)}
+
+.btn-primary{
+    color:#071829;
+    background:linear-gradient(135deg,#ffe3a5,#d9a95d);
+    box-shadow:0 7px 25px rgba(232,189,113,.13);
+}
+
+.btn-primary:hover:not(:disabled){box-shadow:0 10px 30px rgba(232,189,113,.27)}
+
+.btn-secondary{
+    color:var(--cyan2);
+    border-color:var(--line);
+    background:rgba(255,255,255,.025);
+}
+
+.btn-secondary:hover:not(:disabled){border-color:var(--cyan);background:rgba(105,217,237,.07)}
+
+.btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* COMPASS */
+
+.compass{
+    position:relative;
+    width:130px;
+    height:130px;
+    display:grid;
+    place-items:center;
+    margin:0 auto 23px;
+    border:1px solid rgba(232,189,113,.55);
+    border-radius:50%;
+    background:
+        radial-gradient(circle,rgba(105,217,237,.08),transparent 68%),
+        rgba(4,18,32,.4);
+    box-shadow:0 0 45px rgba(105,217,237,.08),inset 0 0 25px rgba(232,189,113,.04);
+    animation:compassFloat 4s ease-in-out infinite;
+}
+
+.compass:before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px dashed rgba(232,189,113,.35);
+    border-radius:50%;
+}
+
+.compass:after{
+    content:"N";
+    position:absolute;
+    top:-13px;
+    color:var(--gold2);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.compass-icon{font-size:65px;color:var(--gold2);filter:drop-shadow(0 0 12px rgba(232,189,113,.18))}
+@keyframes compassFloat{50%{transform:translateY(-7px) rotate(2deg)}}
+
+/* BADGES */
+
+.badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+
+.badge{
+    padding:8px 11px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--cyan2);
+    background:rgba(105,217,237,.04);
+    font-size:9px;
+    letter-spacing:.6px;
+}
+
+/* LETTER */
+
+.letter{
+    position:relative;
+    padding:23px 22px;
+    border:1px solid rgba(232,189,113,.27);
+    background:
+        linear-gradient(145deg,rgba(232,189,113,.045),transparent 65%),
+        rgba(255,255,255,.018);
+    text-align:left;
+}
+
+.letter:before{
+    content:"CAPTAIN'S LOG";
+    position:absolute;
+    top:-9px;
+    right:13px;
+    padding:3px 8px;
+    color:var(--gold);
+    background:#0a2038;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.letter p{color:#c6d7e5;font-size:11px;line-height:1.95}
+.letter p+p{margin-top:12px}
+
+.signature{
+    margin-top:17px;
+    color:var(--gold2);
+    font-family:"Playfair Display",serif;
+    font-size:22px;
+    font-style:italic;
+    text-align:right;
+}
+
+/* QUIZ */
+
+.quiz-count{margin-bottom:12px;color:var(--gold);font-size:10px;letter-spacing:2px;font-weight:700}
+.quiz-question{margin-bottom:20px;font-family:"Playfair Display",serif;font-size:clamp(19px,4vw,26px);font-weight:400;line-height:1.5}
+
+.quiz-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    width:100%;
+    max-width:470px;
+    margin:0 auto;
+}
+
+.quiz-option{
+    min-height:53px;
+    padding:12px 9px;
+    border:1px solid var(--line);
+    border-radius:5px;
+    color:#d0dfeb;
+    background:rgba(255,255,255,.025);
+    font-size:10px;
+    line-height:1.6;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.quiz-option:hover:not(:disabled){border-color:var(--cyan);background:rgba(105,217,237,.07)}
+.quiz-option.correct{border-color:#75d5a0;color:#d8ffe7;background:rgba(65,164,103,.12)}
+.quiz-option.wrong{border-color:#e88888;background:rgba(220,100,100,.1);animation:shake .3s}
+.quiz-option:disabled{cursor:default}
+
+.quiz-feedback{min-height:28px;margin-top:15px;color:var(--gold2);font-size:11px;line-height:1.7}
+
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* SHIP */
+
+.ship-scene{
+    position:relative;
+    width:100%;
+    max-width:350px;
+    height:180px;
+    margin:5px auto 15px;
+    overflow:hidden;
+    border-bottom:1px solid rgba(105,217,237,.35);
+    background:linear-gradient(180deg,rgba(5,17,32,.05),rgba(22,90,123,.1));
+}
+
+.ship-stars{
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle at 18% 20%,#fff 1px,transparent 1.7px),
+        radial-gradient(circle at 76% 14%,#ffe3a5 1px,transparent 1.7px),
+        radial-gradient(circle at 63% 34%,#fff 1px,transparent 1.7px),
+        radial-gradient(circle at 32% 42%,#69d9ed 1px,transparent 1.7px),
+        radial-gradient(circle at 87% 48%,#fff 1px,transparent 1.7px);
+}
+
+.ship-moon{
+    position:absolute;
+    top:16px;
+    right:43px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:var(--gold2);
+    box-shadow:0 0 32px rgba(232,189,113,.2);
+}
+
+.ship-moon:after{
+    content:"";
+    position:absolute;
+    top:-5px;
+    left:9px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#0a2038;
+}
+
+.ship{
+    position:absolute;
+    left:50%;
+    bottom:35px;
+    width:200px;
+    height:95px;
+    transform:translateX(-50%);
+    animation:shipRock 3.5s ease-in-out infinite;
+}
+
+.ship-hull{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:200px;
+    height:35px;
+    background:linear-gradient(180deg,#d8b778,#98703c);
+    clip-path:polygon(0 0,100% 0,83% 100%,17% 100%);
+}
+
+.ship-deck{
+    position:absolute;
+    left:37px;
+    bottom:35px;
+    width:125px;
+    height:23px;
+    background:#dce9f2;
+    clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);
+}
+
+.ship-cabin{
+    position:absolute;
+    left:65px;
+    bottom:58px;
+    width:74px;
+    height:27px;
+    border-top:5px solid var(--gold);
+    background:#dce9f2;
+}
+
+.ship-window{
+    position:absolute;
+    left:8px;
+    top:7px;
+    width:13px;
+    height:8px;
+    background:#1a4a67;
+    box-shadow:19px 0 #1a4a67,38px 0 #1a4a67;
+}
+
+.ship-mast{
+    position:absolute;
+    left:98px;
+    bottom:85px;
+    width:3px;
+    height:55px;
+    background:var(--gold);
+}
+
+.ship-sail{
+    position:absolute;
+    left:103px;
+    bottom:103px;
+    width:35px;
+    height:32px;
+    background:linear-gradient(135deg,#fff4d9,#d7c49d);
+    clip-path:polygon(0 0,100% 100%,0 100%);
+}
+
+.ship-flag{
+    position:absolute;
+    left:101px;
+    bottom:137px;
+    width:24px;
+    height:12px;
+    background:#c85050;
+    clip-path:polygon(0 0,100% 0,75% 100%,0 100%);
+}
+
+.ship-wave{
+    position:absolute;
+    bottom:13px;
+    left:-10%;
+    width:120%;
+    height:16px;
+    border-top:2px solid rgba(105,217,237,.55);
+    border-radius:50%;
+    animation:waveMove 4s ease-in-out infinite alternate;
+}
+
+.ship-wave.two{bottom:3px;opacity:.45;animation-delay:-2s}
+
+@keyframes shipRock{0%,100%{translate:0 0;rotate:-1deg}50%{translate:0 -4px;rotate:1deg}}
+@keyframes waveMove{to{transform:translateX(20px)}}
+
+/* CAKE */
+
+.cake-stage{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:220px;
+    margin:0 auto 5px;
+    cursor:pointer;
+}
+
+.cake{position:relative;width:200px;height:155px;transition:.3s}
+.cake-stage:hover .cake{transform:translateY(-4px)}
+
+.plate{
+    position:absolute;
+    bottom:4px;
+    left:50%;
+    width:220px;
+    height:14px;
+    transform:translateX(-50%);
+    border:1px solid rgba(232,189,113,.7);
+    border-radius:50%;
+    background:linear-gradient(#e8d7b6,#9e8153);
+}
+
+.cake-bottom{
+    position:absolute;
+    bottom:17px;
+    left:18px;
+    width:164px;
+    height:65px;
+    border-radius:5px 5px 13px 13px;
+    background:linear-gradient(90deg,#173e60,#2d6888,#17415f);
+    box-shadow:inset 0 -8px rgba(0,0,0,.15);
+}
+
+.cake-bottom:before{
+    content:"";
+    position:absolute;
+    top:12px;
+    width:100%;
+    height:5px;
+    background:var(--gold);
+}
+
+.cake-top{
+    position:absolute;
+    bottom:75px;
+    left:18px;
+    width:164px;
+    height:36px;
+    border-radius:50%;
+    border-bottom:5px solid #c9a25d;
+    background:linear-gradient(#fff0ce,#e8bd71);
+}
+
+.cake-top:after{
+    content:"⚓";
+    position:absolute;
+    inset:5px 0 auto;
+    color:#12334e;
+    font-size:18px;
+    text-align:center;
+}
+
+.candle{
+    position:absolute;
+    bottom:106px;
+    width:8px;
+    height:35px;
+    border-radius:3px;
+    background:repeating-linear-gradient(135deg,#fff2d7 0 5px,#d2a352 5px 9px);
+    z-index:3;
+}
+
+.candle.one{left:63px}
+.candle.two{left:96px;height:44px}
+.candle.three{left:129px}
+
+.flame{
+    position:absolute;
+    top:-19px;
+    left:50%;
+    width:11px;
+    height:17px;
+    transform:translateX(-50%);
+    border-radius:50% 50% 45% 45%;
+    background:linear-gradient(#fff9c8,#ffc45d,#ed7951);
+    box-shadow:0 0 16px rgba(255,196,93,.7);
+    animation:flicker .5s alternate infinite;
+}
+
+.flame.off{opacity:0;transform:translateX(-50%) scale(0)}
+
+@keyframes flicker{to{rotate:7deg;scale:.9 1.08}}
+
+.cake-instruction{color:var(--gold2);font-size:10px;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.55}}
+
+/* APPRECIATION */
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:20px;
+}
+
+.info-card{
+    padding:16px 12px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:rgba(255,255,255,.025);
+    transition:.3s;
+}
+
+.info-card:hover{transform:translateY(-3px);border-color:rgba(232,189,113,.5)}
+.info-icon{margin-bottom:8px;color:var(--gold);font-size:22px}
+.info-card h3{margin-bottom:6px;color:var(--cyan2);font-family:"Playfair Display",serif;font-size:13px;font-weight:500}
+.info-card p{color:var(--muted);font-size:10px;line-height:1.8}
+
+/* GALLERY */
+
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+
+.photo-card{
+    position:relative;
+    height:135px;
+    overflow:hidden;
+    border:1px solid rgba(232,189,113,.35);
+    border-radius:5px;
+    background:linear-gradient(145deg,#163e5b,#07182a);
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .4s;
+}
+
+.photo-card:hover img{transform:scale(1.07)}
+
+.photo-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    color:var(--gold2);
+    pointer-events:none;
+}
+
+.photo-placeholder .icon{font-size:26px}
+.photo-placeholder span:last-child{font-size:8px;letter-spacing:1.3px;color:var(--cyan2)}
+
+.photo-card figcaption{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    padding:19px 7px 8px;
+    color:white;
+    font-size:9px;
+    text-align:center;
+    background:linear-gradient(transparent,rgba(3,13,24,.95));
+}
+
+/* WISHES */
+
+.wish-list{display:grid;gap:10px;margin-top:18px;text-align:left}
+
+.wish-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:13px;
+    border:1px solid var(--line);
+    border-radius:5px;
+    background:rgba(255,255,255,.02);
+}
+
+.wish-icon{color:var(--gold);font-size:16px;flex-shrink:0}
+.wish-item p{color:#c5d6e4;font-size:10px;line-height:1.85}
+.wish-item strong{color:var(--cyan2)}
+
+/* GIFT */
+
+.gift-box{
+    display:grid;
+    place-items:center;
+    width:125px;
+    height:125px;
+    margin:20px auto;
+    border:1px solid rgba(232,189,113,.45);
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(232,189,113,.12),transparent 70%);
+    cursor:pointer;
+    transition:.35s;
+}
+
+.gift-box:hover{transform:scale(1.06);background:rgba(232,189,113,.1)}
+.gift-icon{font-size:56px;animation:giftFloat 2s infinite ease-in-out}
+@keyframes giftFloat{50%{transform:translateY(-7px) rotate(4deg)}}
+
+.gift-message{max-height:0;overflow:hidden;opacity:0;transition:max-height .6s,opacity .4s}
+.gift-message.open{max-height:600px;opacity:1;margin-top:15px}
+
+.gift-inner{padding:20px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.gift-inner p{color:#c6d7e5;font-size:11px;line-height:1.95}
+.gift-inner p+p{margin-top:12px}
+
+/* FINAL */
+
+.final-emblem{
+    display:grid;
+    place-items:center;
+    width:85px;
+    height:85px;
+    margin:0 auto 20px;
+    border:1px solid rgba(232,189,113,.5);
+    border-radius:50%;
+    color:var(--gold2);
+    font-size:42px;
+    background:rgba(232,189,113,.05);
+    animation:compassFloat 3s infinite;
+}
+
+.final-stamp{
+    display:inline-block;
+    margin:15px auto;
+    padding:8px 14px;
+    border:1px solid rgba(232,189,113,.5);
+    color:var(--gold2);
+    font-size:9px;
+    letter-spacing:3px;
+    transform:rotate(-3deg);
+}
+
+/* NAVIGATION */
+
+.navigation{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding-top:16px;
+    margin-top:10px;
+    border-top:1px solid rgba(183,242,255,.09);
+}
+
+.nav-button{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:9px 12px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--muted);
+    background:rgba(255,255,255,.02);
+    font-size:9px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.nav-button:hover:not(:disabled){color:var(--cyan2);border-color:var(--cyan)}
+.nav-button:disabled{opacity:.25;cursor:not-allowed}
+
+.slide-dots{display:flex;align-items:center;justify-content:center;gap:5px}
+.slide-dot{width:5px;height:5px;border:0;border-radius:50%;background:rgba(183,242,255,.22)}
+.slide-dot.active{width:17px;border-radius:8px;background:var(--gold)}
+.slide-number{color:var(--gold);font-size:9px;letter-spacing:1px}
+
+/* WELCOME */
+
+.welcome-overlay{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:22px;
+    background:rgba(2,10,19,.93);
+    backdrop-filter:blur(18px);
+    transition:opacity .6s,visibility .6s;
+}
+
+.welcome-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+
+.welcome-card{
+    position:relative;
+    width:100%;
+    max-width:440px;
+    padding:38px 28px;
+    overflow:hidden;
+    border:1px solid rgba(232,189,113,.35);
+    background:
+        radial-gradient(ellipse at 50% 0,rgba(105,217,237,.1),transparent 55%),
+        linear-gradient(145deg,#102b44,#061525);
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.welcome-card:before,.welcome-card:after{
+    content:"";
+    position:absolute;
+    width:65px;
+    height:65px;
+    border-color:rgba(232,189,113,.55);
+    border-style:solid;
+}
+
+.welcome-card:before{top:10px;left:10px;border-width:1px 0 0 1px}
+.welcome-card:after{right:10px;bottom:10px;border-width:0 1px 1px 0}
+
+.welcome-icon{margin-bottom:16px;color:var(--gold2);font-size:40px}
+.welcome-card h1{margin-bottom:15px;font-family:"Playfair Display",serif;font-size:clamp(33px,8vw,49px);font-weight:500;line-height:1.2}
+.welcome-card h1 span{color:var(--gold2);font-style:italic}
+.welcome-card p{margin-bottom:22px;color:var(--muted);font-size:11px;line-height:2}
+.welcome-card .btn{min-width:205px}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    z-index:1000;
+    left:50%;
+    bottom:22px;
+    width:max-content;
+    max-width:calc(100% - 28px);
+    padding:12px 17px;
+    border:1px solid var(--line);
+    background:rgba(5,20,35,.97);
+    color:var(--cyan2);
+    font-size:10px;
+    text-align:center;
+    opacity:0;
+    visibility:hidden;
+    transform:translate(-50%,12px);
+    transition:.3s;
+}
+
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+/* FLOATING PARTICLES */
+
+.float-symbol{
+    position:fixed;
+    bottom:-25px;
+    z-index:30;
+    color:var(--gold2);
+    pointer-events:none;
+    animation:floatUp 4s ease-out forwards;
+}
+
+@keyframes floatUp{
+    0%{opacity:0;transform:translateY(0) rotate(0)}
+    15%{opacity:.9}
+    100%{opacity:0;transform:translateY(-100vh) rotate(40deg)}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+    body{padding:65px 10px 12px}
+
+    .music-player{top:10px;right:10px;padding:6px 9px}
+    .music-button{width:31px;height:31px}
+    .music-label{font-size:8px}
+
+    .card{
+        height:calc(100dvh - 95px);
+        min-height:500px;
+        padding:27px 16px 17px;
+        border-radius:17px;
+    }
+
+    .progress-area{margin-bottom:12px}
+    .progress-info{font-size:8px;letter-spacing:1.4px}
+    .slide{padding:5px 2px 12px}
+    .eyebrow{font-size:8px;letter-spacing:1.8px;margin-bottom:12px}
+    .description{font-size:11px;line-height:1.9}
+    .title{font-size:clamp(25px,7vw,35px)}
+    .button-row{gap:8px;margin-top:17px}
+    .btn{min-height:40px;padding:10px 14px;font-size:9px}
+    .compass{width:100px;height:100px;margin-bottom:19px}
+    .compass-icon{font-size:50px}
+    .letter{padding:20px 14px}
+    .letter p{font-size:10px;line-height:1.85}
+    .quiz-options{gap:7px}
+    .quiz-option{min-height:49px;padding:9px 6px;font-size:9px}
+    .ship-scene{height:155px}
+    .cake-stage{height:200px}
+    .grid{gap:8px;margin-top:14px}
+    .info-card{padding:13px 9px}
+    .info-card h3{font-size:12px}
+    .info-card p{font-size:9px}
+    .photo-grid{gap:8px}
+    .photo-card{height:112px}
+    .wish-item{padding:10px}
+    .wish-item p{font-size:9px}
+    .navigation{padding-top:12px;margin-top:7px}
+    .nav-button{padding:8px 9px;font-size:8px;gap:4px}
+    .slide-dots{gap:4px}
+    .slide-dot{width:4px;height:4px}
+    .slide-dot.active{width:12px}
+    .slide-number{font-size:8px}
+    .welcome-card{padding:34px 20px}
+}
+
+@media(max-width:370px){
+    .card{padding-right:12px;padding-left:12px}
+    .nav-button{padding:7px}
+    .slide-dots{gap:3px}
+    .slide-dot.active{width:9px}
+    .photo-card{height:100px}
+}
+
+@media(max-height:720px) and (min-width:601px){
+    .card{height:calc(100dvh - 90px);min-height:480px;padding-top:20px;padding-bottom:14px}
+    .progress-area{margin-bottom:10px}
+    .navigation{padding-top:10px;margin-top:6px}
+    .compass{width:90px;height:90px;margin-bottom:12px}
+    .compass-icon{font-size:45px}
+    .ship-scene{height:135px}
+    .cake-stage{height:175px}
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="oceanCanvas"></canvas>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
+<!-- MUSIC -->
+<div class="music-player">
+    <button class="music-button" id="musicToggle" type="button" aria-label="Putar atau hentikan musik">♫</button>
+    <div>
+        <div class="music-label" id="musicLabel">CAPTAIN'S PLAYLIST</div>
+        <div class="music-bars" id="musicBars">
+            <span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+</div>
+
+<audio id="backgroundMusic" loop preload="none">
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- WELCOME -->
+<div class="welcome-overlay" id="welcomeOverlay">
+    <div class="welcome-card">
+        <div class="welcome-icon">⚓</div>
+
+        <div class="eyebrow">Happy Birthday Sayang</div>
+
+        <h1>Muhammad, <span>Harsyah</span></h1>
+
+        <p>
+            Perhatian, <br>
+            Sebuah pesan spesial telah tiba di pelabuhan.<br>
+            Ada ucapan, doa, dan sedikit kejutan
+            yang sudah disiapkan khusus untukmu.
+            <br><br>
+            Siap memulai perjalanan?
+        </p>
+
+        <button class="btn btn-primary" id="startButton" type="button">
+            BUKA PESAN RAHASIA ⚓
+        </button>
+
+        <div class="divider"></div>
+
+        <div class="small-note">ONE CAPTAIN · ONE SPECIAL DAY · MANY GOOD WISHES</div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<main class="card">
+
+    <div class="progress-area">
+        <div class="progress-info">
+            <span>Mission: Birthday Voyage</span>
+            <span id="progressText">01 / 11</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <div class="slides-wrapper">
+
+        <!-- SLIDE 1 -->
+        <section class="slide active" data-slide="0">
+            <div class="slide-content">
+
+                <div class="compass">
+                    <span class="compass-icon">⚓</span>
+                </div>
+
+                <div class="eyebrow">TODAY'S DESTINATION: YOUR BIRTHDAY</div>
+
+                <h1 class="title">
+                    HAPPY BIRTHDAY,
+                    <br>
+                    <span class="gold">MUHAMMAD HARSYAH</span>
+                </h1>
+
+                <p class="description">
+                    Hari ini, satu pelabuhan baru menantimu.
+                    Bukan sekadar bertambah usia, tetapi juga
+                    tentang semua perjalanan, perjuangan, dan
+                    mimpi besar yang sedang kamu kejar.
+                </p>
+
+                <div class="divider"></div>
+
+                <p class="description">
+                    Untuk cowok hebat yang sedang menyiapkan
+                    diri menghadapi luasnya lautan dan masa depan.
+                    <strong>Hari ini, kamu yang jadi pemeran utamanya.</strong>
+                </p>
+
+                <div class="badges">
+                    <span class="badge">⚓ BRAVE HEART</span>
+                    <span class="badge">🌊 BIG DREAMS</span>
+                    <span class="badge">✦ NEW CHAPTER</span>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" onclick="goToSlide(1)" type="button">
+                        MULAI PERJALANAN →
+                    </button>
+                </div>
+
+                <p class="small-note" style="margin-top:15px">
+                    ALL ABOARD — THIS JOURNEY IS JUST FOR YOU
+                </p>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 2 -->
+        <section class="slide" data-slide="1">
+            <div class="slide-content">
+
+                <div class="eyebrow">A LETTER FROM SOMEONE SPECIAL</div>
+
+                <h2 class="script">Dear, My Captain</h2>
+
+                <div class="letter">
+                    <p>Selamat ulang tahun, yaa. ⚓</p>
+
+                    <p>
+                        Di antara luasnya lautan dan banyaknya
+                        perjalanan yang akan kamu tempuh,
+                        hari ini aku ingin kamu berhenti sebentar
+                        untuk merayakan dirimu sendiri.
+                    </p>
+
+                    <p>
+                        Terima kasih sudah terus berusaha,
+                        bahkan ketika semuanya nggak selalu mudah.
+                        Aku tahu ada banyak hal yang sedang kamu
+                        perjuangkan, ada mimpi yang ingin kamu capai,
+                        dan ada masa depan yang sedang kamu siapkan.
+                    </p>
+
+                    <p>
+                        Aku mungkin nggak selalu bisa menemani
+                        setiap langkahmu secara langsung.
+                        Tapi aku berharap kamu selalu punya alasan
+                        untuk tetap semangat, tetap percaya diri,
+                        dan nggak menyerah pada hal-hal yang kamu impikan.
+                    </p>
+
+                    <p>
+                        Semoga bertambahnya usia membuat kamu semakin
+                        kuat, bijaksana, dan bahagia.
+                        Jangan cuma hebat menghadapi ombak di lautan,
+                        tetapi juga tetap baik dalam memperlakukan
+                        dirimu sendiri.
+                    </p>
+
+                    <p>
+                        Hari ini, semoga kamu merasa dihargai,
+                        disayangi, dan bangga pada perjalanan yang
+                        sudah berhasil kamu lewati.
+                    </p>
+
+                    <div class="signature">With respect & affection.</div>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" onclick="goToSlide(2)" type="button">
+                        LANJUTKAN MISI →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 3 -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+
+                <div class="eyebrow">NAVIGATION TEST</div>
+                <div class="quiz-count">QUESTION 01 / 03</div>
+
+                <h2 class="quiz-question">
+                    Kalau seorang pelaut ingin menentukan arah perjalanan,
+                    alat navigasi apa yang identik digunakan untuk menunjukkan arah?
+                </h2>
+
+                <div class="quiz-options">
+                    <button class="quiz-option" data-correct="false" type="button">Teropong</button>
+                    <button class="quiz-option" data-correct="true" type="button">Kompas</button>
+                    <button class="quiz-option" data-correct="false" type="button">Jangkar</button>
+                    <button class="quiz-option" data-correct="false" type="button">Pelampung</button>
+                </div>
+
+                <div class="quiz-feedback" aria-live="polite"></div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary quiz-next" disabled onclick="goToSlide(3)" type="button">
+                        NEXT WAYPOINT →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 4 -->
+        <section class="slide" data-slide="3">
+            <div class="slide-content">
+
+                <div class="eyebrow">CAPTAIN'S KNOWLEDGE</div>
+                <div class="quiz-count">QUESTION 02 / 03</div>
+
+                <h2 class="quiz-question">
+                    Apa yang harus dimiliki seseorang untuk tetap melangkah
+                    ketika menghadapi perjalanan yang berat?
+                </h2>
+
+                <div class="quiz-options">
+                    <button class="quiz-option" data-correct="false" type="button">Menyerah lebih awal</button>
+                    <button class="quiz-option" data-correct="false" type="button">Takut mencoba</button>
+                    <button class="quiz-option" data-correct="true" type="button">Tekad dan keberanian</button>
+                    <button class="quiz-option" data-correct="false" type="button">Menghindari tantangan</button>
+                </div>
+
+                <div class="quiz-feedback" aria-live="polite"></div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary quiz-next" disabled onclick="goToSlide(4)" type="button">
+                        NEXT WAYPOINT →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 5 -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content">
+
+                <div class="eyebrow">FINAL NAVIGATION TEST</div>
+                <div class="quiz-count">QUESTION 03 / 03</div>
+
+                <h2 class="quiz-question">
+                    Kalau suatu hari perjalananmu terasa berat,
+                    apa yang sebaiknya kamu ingat?
+                </h2>
+
+                <div class="quiz-options">
+                    <button class="quiz-option" data-correct="false" type="button">Aku harus selalu sempurna</button>
+                    <button class="quiz-option" data-correct="false" type="button">Aku tidak boleh beristirahat</button>
+                    <button class="quiz-option" data-correct="false" type="button">Aku harus menyerah jika gagal</button>
+                    <button class="quiz-option" data-correct="true" type="button">Aku boleh lelah, lalu mencoba lagi</button>
+                </div>
+
+                <div class="quiz-feedback" aria-live="polite"></div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary quiz-next" disabled onclick="goToSlide(5)" type="button">
+                        MENUJU PERAYAAN →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 6 -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content">
+
+                <div class="eyebrow">BIRTHDAY CELEBRATION</div>
+
+                <h2 class="title">MAKE A <span class="gold">WISH, CAPTAIN</span></h2>
+
+                <p class="description">
+                    Sebelum melanjutkan perjalanan, pejamkan mata
+                    sebentar dan pikirkan satu harapan yang ingin
+                    kamu wujudkan di usia yang baru.
+                </p>
+
+                <div class="cake-stage" id="cakeStage" role="button" tabindex="0" aria-label="Tiup lilin ulang tahun">
+                    <div class="cake">
+                        <div class="plate"></div>
+                        <div class="cake-bottom"></div>
+                        <div class="cake-top"></div>
+                        <div class="candle one"><div class="flame"></div></div>
+                        <div class="candle two"><div class="flame"></div></div>
+                        <div class="candle three"><div class="flame"></div></div>
+                    </div>
+                </div>
+
+                <p class="cake-instruction" id="cakeInstruction">
+                    TAP THE CAKE TO BLOW OUT THE CANDLES
+                </p>
+
+                <p class="description" id="cakeMessage" hidden>
+                    Semoga setiap doa menemukan jalannya,
+                    setiap usaha membawa hasil yang baik,
+                    dan setiap perjalanan membawamu lebih dekat
+                    pada cita-citamu. ⚓
+                </p>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" id="cakeNextButton" disabled onclick="goToSlide(6)" type="button">
+                        LANJUTKAN →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 7 -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content">
+
+                <div class="eyebrow">THE MAN BEHIND THE UNIFORM</div>
+
+                <h2 class="title">
+                    MORE THAN A
+                    <br>
+                    <span class="gold">SAILOR IN THE MAKING</span>
+                </h2>
+
+                <p class="description">
+                    Ada banyak hal yang membuat kamu layak
+                    dibanggakan. Bukan hanya cita-cita besarmu,
+                    tetapi juga proses yang sedang kamu jalani.
+                </p>
+
+                <div class="grid">
+
+                    <div class="info-card">
+                        <div class="info-icon">⚓</div>
+                        <h3>Keberanian</h3>
+                        <p>Berani mencoba, menghadapi tantangan, dan terus belajar.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">🌊</div>
+                        <h3>Perjuangan</h3>
+                        <p>Tetap bergerak walau perjalanan nggak selalu mudah.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">🧭</div>
+                        <h3>Tujuan</h3>
+                        <p>Menjaga arah dan mengingat alasan di balik setiap usaha.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">✦</div>
+                        <h3>Masa Depan</h3>
+                        <p>Mempersiapkan diri untuk peluang dan tanggung jawab baru.</p>
+                    </div>
+
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" onclick="goToSlide(7)" type="button">
+                        LIHAT KENANGAN →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 8 -->
+        <section class="slide" data-slide="7">
+            <div class="slide-content">
+
+                <div class="eyebrow">PERSONAL LOGBOOK</div>
+
+                <h2 class="script">Our Little Memories</h2>
+
+                <p class="description">
+                    Setiap perjalanan punya ceritanya sendiri.
+                    Ini beberapa potongan kenangan yang bisa
+                    kamu simpan dalam logbook kecil kita.
+                </p>
+
+                <div class="photo-grid">
+
+                    <figure class="photo-card">
+                        <img src="foto1.jpg" alt="Kenangan pertama" onerror="this.style.display='none'">
+                        <div class="photo-placeholder">
+                            <span class="icon">⚓</span>
+                            <span>MEMORY LOG 001</span>
+                        </div>
+                        <figcaption>Awal dari sebuah cerita</figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="foto2.jpg" alt="Kenangan kedua" onerror="this.style.display='none'">
+                        <div class="photo-placeholder">
+                            <span class="icon">🌊</span>
+                            <span>MEMORY LOG 002</span>
+                        </div>
+                        <figcaption>Momen yang bikin tersenyum</figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="foto3.jpg" alt="Kenangan ketiga" onerror="this.style.display='none'">
+                        <div class="photo-placeholder">
+                            <span class="icon">🧭</span>
+                            <span>MEMORY LOG 003</span>
+                        </div>
+                        <figcaption>Salah satu favoritku</figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="foto4.jpg" alt="Kenangan keempat" onerror="this.style.display='none'">
+                        <div class="photo-placeholder">
+                            <span class="icon">✦</span>
+                            <span>NEXT ADVENTURE</span>
+                        </div>
+                        <figcaption>Masih banyak cerita berikutnya</figcaption>
+                    </figure>
+
+                </div>
+
+                <p class="small-note" style="margin-top:12px">
+                    GANTI FOTO1.JPG SAMPAI FOTO4.JPG DENGAN FOTO KALIAN
+                </p>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" onclick="goToSlide(8)" type="button">
+                        BACA DOAKU →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 9 -->
+        <section class="slide" data-slide="8">
+            <div class="slide-content">
+
+                <div class="eyebrow">MY WISHES FOR YOUR NEW VOYAGE</div>
+
+                <h2 class="title">FAIR WINDS & <span class="gold">FOLLOWING SEAS</span></h2>
+
+                <p class="description">
+                    Ada beberapa doa yang ingin aku titipkan
+                    untuk perjalanan hidupmu selanjutnya.
+                </p>
+
+                <div class="wish-list">
+
+                    <div class="wish-item">
+                        <span class="wish-icon">⚓</span>
+                        <p>
+                            <strong>Semoga selalu diberi kesehatan.</strong>
+                            Jaga diri baik-baik, cukup istirahat,
+                            dan jangan abaikan keadaanmu sendiri
+                            demi mengejar semua target.
+                        </p>
+                    </div>
+
+                    <div class="wish-item">
+                        <span class="wish-icon">🌊</span>
+                        <p>
+                            <strong>Semoga langkahmu selalu dimudahkan.</strong>
+                            Semoga pendidikan, latihan, dan semua
+                            persiapan menuju cita-citamu memberikan
+                            hasil yang membanggakan.
+                        </p>
+                    </div>
+
+                    <div class="wish-item">
+                        <span class="wish-icon">🧭</span>
+                        <p>
+                            <strong>Semoga kamu selalu menemukan arah.</strong>
+                            Ketika ada rintangan, semoga kamu diberi
+                            ketenangan untuk berpikir dan keberanian
+                            untuk menentukan langkah.
+                        </p>
+                    </div>
+
+                    <div class="wish-item">
+                        <span class="wish-icon">✦</span>
+                        <p>
+                            <strong>Semoga semua mimpimu punya kesempatan menjadi nyata.</strong>
+                            Semoga suatu hari kamu bisa berdiri dengan
+                            bangga melihat sejauh apa kamu telah melangkah.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" onclick="goToSlide(9)" type="button">
+                        BUKA HADIAH RAHASIA →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 10 -->
+        <section class="slide" data-slide="9">
+            <div class="slide-content">
+
+                <div class="eyebrow">CLASSIFIED MESSAGE</div>
+
+                <h2 class="script">A Message Just for You</h2>
+
+                <p class="description">
+                    Ada satu pesan yang sengaja kusimpan
+                    sampai perjalanan ini hampir berakhir.
+                </p>
+
+                <div class="gift-box" id="giftBox" role="button" tabindex="0" aria-label="Buka hadiah rahasia">
+                    <span class="gift-icon">🎁</span>
+                </div>
+
+                <p class="small-note" id="giftInstruction">
+                    TAP TO UNLOCK YOUR SECRET MESSAGE
+                </p>
+
+                <div class="gift-message" id="giftMessage">
+                    <div class="gift-inner">
+
+                        <h3 class="script">One Last Thing...</h3>
+
+                        <p>
+                            Aku tahu jalan menuju cita-cita nggak selalu
+                            semudah yang dibayangkan. Akan ada masa ketika
+                            kamu capek, ragu, atau merasa semuanya berjalan
+                            lebih lambat daripada yang kamu inginkan.
+                        </p>
+
+                        <p>
+                            Kalau hari itu datang, ingat bahwa kamu nggak
+                            harus menyelesaikan semuanya dalam satu waktu.
+                            Kamu boleh beristirahat, mengambil napas,
+                            lalu melanjutkan perjalanan saat sudah siap.
+                        </p>
+
+                        <p>
+                            Aku berharap kamu selalu bertumbuh menjadi
+                            seseorang yang bukan hanya hebat dalam
+                            pekerjaannya, tetapi juga punya hati yang baik,
+                            tahu cara menghargai orang lain, dan tetap
+                            rendah hati saat berhasil.
+                        </p>
+
+                        <p>
+                            Terus kejar apa yang kamu impikan.
+                            Semoga suatu hari nanti kamu bisa melihat
+                            kembali perjalanan ini dan berkata,
+                            "Ternyata aku bisa sampai sejauh ini."
+                        </p>
+
+                        <div class="signature">Proud of you. Always.</div>
+
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" id="giftNextButton" disabled onclick="goToSlide(10)" type="button">
+                        PESAN TERAKHIR →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 11 -->
+        <section class="slide" data-slide="10">
+            <div class="slide-content">
+
+                <div class="eyebrow">VOYAGE COMPLETE · NEW JOURNEY AHEAD</div>
+
+                <div class="final-emblem">⚓</div>
+
+                <h2 class="script">Happy Birthday, Captain!</h2>
+
+                <h3 class="title" style="font-size:clamp(23px,4vw,32px)">
+                    MAY YOUR DREAMS FIND THEIR HARBOR.
+                </h3>
+
+                <div class="divider"></div>
+
+                <p class="description">
+                    Selamat bertambah usia, cowok hebat.
+                    Semoga di tahun yang baru ini kamu mendapatkan
+                    lebih banyak kebahagiaan, kesehatan, kesempatan,
+                    dan alasan untuk bangga pada dirimu sendiri.
+                </p>
+
+                <p class="description">
+                    Semoga cita-citamu di dunia pelayaran semakin
+                    dekat, langkahmu semakin mantap, dan setiap
+                    tantangan membawamu menjadi pribadi yang lebih kuat.
+                </p>
+
+                <p class="description">
+                    Ke mana pun perjalanan membawamu nanti,
+                    jangan lupa menjaga diri, menikmati proses,
+                    dan memberi ruang bagi dirimu untuk bahagia.
+                </p>
+
+                <div class="final-stamp">FAIR WINDS · SAFE VOYAGE</div>
+
+                <p class="description">
+                    Hari ini adalah tentang kamu.
+                    Nikmati harimu, Kapten. Kamu pantas mendapatkan
+                    banyak hal baik. 🌊
+                </p>
+
+                <div class="signature" style="text-align:center">
+                    From someone who cares about you.
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" id="whatsappButton" type="button">
+                        KIRIM BALASAN ↗
+                    </button>
+
+                    <button class="btn btn-secondary" onclick="restartWebsite()" type="button">
+                        ULANGI PERJALANAN ↻
+                    </button>
+                </div>
+
+                <p class="small-note" style="margin-top:14px">
+                    END OF TRANSMISSION — BUT YOUR JOURNEY CONTINUES.
+                </p>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="navigation">
+
+        <button class="nav-button" id="previousButton" type="button" disabled>
+            ← BACK
+        </button>
+
+        <div class="slide-dots" id="slideDots" aria-label="Progress halaman"></div>
+
+        <div class="slide-number" id="slideNumber">01 / 11</div>
+
+        <button class="nav-button" id="nextButton" type="button">
+            NEXT →
+        </button>
+
+    </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================
+   1. ELEMENTS
+===================================================== */
+
+const slides = [...document.querySelectorAll(".slide")];
+const totalSlides = slides.length;
+
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const slideNumber = document.getElementById("slideNumber");
+
+const previousButton = document.getElementById("previousButton");
+const nextButton = document.getElementById("nextButton");
+const slideDots = document.getElementById("slideDots");
+
+const welcomeOverlay = document.getElementById("welcomeOverlay");
+const startButton = document.getElementById("startButton");
+
+const backgroundMusic = document.getElementById("backgroundMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicLabel = document.getElementById("musicLabel");
+const musicBars = document.getElementById("musicBars");
+
+const toast = document.getElementById("toast");
+
+let currentSlide = 0;
+let websiteStarted = false;
+let cakeBlown = false;
+let giftOpened = false;
+let toastTimeout;
+
+const completedSlides = new Set([0]);
+
+/* =====================================================
+   2. SLIDE DOTS
+===================================================== */
+
+for(let i = 0; i < totalSlides; i++){
+    const dot = document.createElement("span");
+    dot.className = "slide-dot";
+    if(i === 0) dot.classList.add("active");
+    slideDots.appendChild(dot);
+}
+
+const dots = [...document.querySelectorAll(".slide-dot")];
+
+/* =====================================================
+   3. SLIDE LOCK SYSTEM
+   Slide harus diselesaikan sebelum lanjut.
+===================================================== */
+
+function canLeaveSlide(index){
+    if(index === 0) return true;
+
+    if(index >= 2 && index <= 4){
+        return slides[index].dataset.completed === "true";
+    }
+
+    if(index === 5) return cakeBlown;
+
+    if(index === 9) return giftOpened;
+
+    return true;
+}
+
+function canEnterSlide(index){
+    if(index <= currentSlide) return true;
+
+    if(index > currentSlide + 1){
+        showToast("⚓ Selesaikan waypoint sebelumnya terlebih dahulu.");
+        return false;
+    }
+
+    if(!canLeaveSlide(currentSlide)){
+        showToast(getSlideLockMessage(currentSlide));
+        return false;
+    }
+
+    return true;
+}
+
+function getSlideLockMessage(index){
+    if(index >= 2 && index <= 4){
+        return "Jawab pertanyaan kapten dengan benar untuk melanjutkan!";
+    }
+
+    if(index === 5){
+        return "Tiup lilin ulang tahun terlebih dahulu 🎂";
+    }
+
+    if(index === 9){
+        return "Buka hadiah rahasia sebelum melanjutkan 🎁";
+    }
+
+    return "Selesaikan halaman ini terlebih dahulu.";
+}
+
+function updateNavigation(){
+    slides.forEach((slide,index)=>{
+        slide.classList.toggle("active",index === currentSlide);
+        slide.setAttribute("aria-hidden",index !== currentSlide ? "true" : "false");
+    });
+
+    dots.forEach((dot,index)=>{
+        dot.classList.toggle("active",index === currentSlide);
+    });
+
+    const page = String(currentSlide + 1).padStart(2,"0");
+    const total = String(totalSlides).padStart(2,"0");
+
+    progressText.textContent = `${page} / ${total}`;
+    slideNumber.textContent = `${page} / ${total}`;
+
+    progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+    previousButton.disabled = currentSlide === 0;
+    nextButton.disabled = currentSlide === totalSlides - 1;
+
+    nextButton.textContent =
+        currentSlide === totalSlides - 1 ? "FINISH" : "NEXT →";
+
+    slides[currentSlide].scrollTop = 0;
+}
+
+function goToSlide(index){
+    if(!Number.isInteger(index) || index < 0 || index >= totalSlides){
+        return;
+    }
+
+    if(index === currentSlide) return;
+
+    if(!canEnterSlide(index)) return;
+
+    currentSlide = index;
+    completedSlides.add(index);
+
+    updateNavigation();
+    createFloatingSymbols(5);
+
+    if(currentSlide === 10){
+        launchFireworks();
+        setTimeout(launchFireworks,700);
+    }
+}
+
+previousButton.addEventListener("click",()=>{
+    if(currentSlide > 0){
+        goToSlide(currentSlide - 1);
+    }
+});
+
+nextButton.addEventListener("click",()=>{
+    if(currentSlide < totalSlides - 1){
+        goToSlide(currentSlide + 1);
+    }
+});
+
+/* =====================================================
+   4. START
+===================================================== */
+
+startButton.addEventListener("click",async()=>{
+    if(websiteStarted) return;
+
+    websiteStarted = true;
+    welcomeOverlay.classList.add("hidden");
+
+    createFloatingSymbols(12);
+    showToast("⚓ Welcome aboard, Captain!");
+
+    try{
+        await backgroundMusic.play();
+        updateMusicButton(true);
+    }catch(error){
+        updateMusicButton(false);
+        musicLabel.textContent = "MUSIC READY";
+    }
+});
+
+/* =====================================================
+   5. MUSIC
+===================================================== */
+
+function updateMusicButton(playing){
+    musicToggle.textContent = playing ? "Ⅱ" : "♫";
+    musicLabel.textContent = playing ? "NOW PLAYING" : "CAPTAIN'S PLAYLIST";
+    musicBars.classList.toggle("playing",playing);
+}
+
+musicToggle.addEventListener("click",async()=>{
+    if(backgroundMusic.paused){
+        try{
+            await backgroundMusic.play();
+            updateMusicButton(true);
+        }catch(error){
+            showToast("Tambahkan file musik.mp3 ke folder website.");
+            updateMusicButton(false);
+        }
+    }else{
+        backgroundMusic.pause();
+        updateMusicButton(false);
+    }
+});
+
+backgroundMusic.addEventListener("play",()=>updateMusicButton(true));
+backgroundMusic.addEventListener("pause",()=>updateMusicButton(false));
+backgroundMusic.addEventListener("error",()=>updateMusicButton(false));
+
+/* =====================================================
+   6. QUIZ
+===================================================== */
+
+const quizSlides = [2,3,4];
+
+const quizMessages = [
+    "Benar, Kapten! Kompas membantu menentukan arah. 🧭",
+    "Tepat! Keberanian dan tekad membantumu menghadapi tantangan. ⚓",
+    "Betul! Beristirahat bukan berarti menyerah. 🌊"
+];
+
+quizSlides.forEach((slideIndex,quizIndex)=>{
+    const slide = slides[slideIndex];
+    const options = [...slide.querySelectorAll(".quiz-option")];
+    const feedback = slide.querySelector(".quiz-feedback");
+    const next = slide.querySelector(".quiz-next");
+
+    let answered = false;
+
+    options.forEach(option=>{
+        option.addEventListener("click",()=>{
+            if(answered) return;
+
+            if(option.dataset.correct === "true"){
+                answered = true;
+                slide.dataset.completed = "true";
+
+                option.classList.add("correct");
+
+                options.forEach(item=>{
+                    item.disabled = true;
+                });
+
+                feedback.textContent = quizMessages[quizIndex];
+                next.disabled = false;
+
+                createFloatingSymbols(7);
+                showToast("Waypoint berhasil diselesaikan!");
+            }else{
+                option.classList.remove("wrong");
+                void option.offsetWidth;
+                option.classList.add("wrong");
+
+                feedback.textContent = "Belum tepat, Kapten. Coba sekali lagi!";
+
+                setTimeout(()=>{
+                    option.classList.remove("wrong");
+                },450);
+            }
+        });
+    });
+});
+
+/* =====================================================
+   7. BIRTHDAY CAKE
+===================================================== */
+
+const cakeStage = document.getElementById("cakeStage");
+const cakeInstruction = document.getElementById("cakeInstruction");
+const cakeMessage = document.getElementById("cakeMessage");
+const cakeNextButton = document.getElementById("cakeNextButton");
+
+function blowCandles(){
+    if(cakeBlown) return;
+
+    cakeBlown = true;
+
+    document.querySelectorAll(".flame").forEach(flame=>{
+        flame.classList.add("off");
+    });
+
+    cakeInstruction.textContent = "MISSION COMPLETE — CANDLES BLOWN! ⚓";
+    cakeMessage.hidden = false;
+    cakeNextButton.disabled = false;
+
+    createFloatingSymbols(15);
+    launchFireworks();
+
+    showToast("Happy Birthday, Captain! 🎂");
+}
+
+cakeStage.addEventListener("click",blowCandles);
+
+cakeStage.addEventListener("keydown",event=>{
+    if(event.key === "Enter" || event.key === " "){
+        event.preventDefault();
+        blowCandles();
+    }
+});
+
+/* =====================================================
+   8. SECRET GIFT
+===================================================== */
+
+const giftBox = document.getElementById("giftBox");
+const giftMessage = document.getElementById("giftMessage");
+const giftInstruction = document.getElementById("giftInstruction");
+const giftNextButton = document.getElementById("giftNextButton");
+
+function openGift(){
+    if(giftOpened) return;
+
+    giftOpened = true;
+
+    giftMessage.classList.add("open");
+    giftInstruction.textContent = "SECRET MESSAGE UNLOCKED ⚓";
+
+    giftBox.querySelector(".gift-icon").textContent = "💝";
+    giftNextButton.disabled = false;
+
+    createFloatingSymbols(12);
+    showToast("Pesan rahasia berhasil dibuka!");
+}
+
+giftBox.addEventListener("click",openGift);
+
+giftBox.addEventListener("keydown",event=>{
+    if(event.key === "Enter" || event.key === " "){
+        event.preventDefault();
+        openGift();
+    }
+});
+
+/* =====================================================
+   9. FLOATING SYMBOLS
+===================================================== */
+
+function createFloatingSymbols(amount=5){
+    const symbols = ["⚓","✦","✧","⋆","♢"];
+
+    for(let i=0;i<amount;i++){
+        setTimeout(()=>{
+            const item = document.createElement("div");
+            item.className = "float-symbol";
+            item.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+
+            item.style.left = `${Math.random()*95}%`;
+            item.style.fontSize = `${12+Math.random()*15}px`;
+            item.style.animationDuration = `${3+Math.random()*2}s`;
+
+            document.body.appendChild(item);
+
+            setTimeout(()=>item.remove(),5500);
+        },i*100);
+    }
+}
+
+/* =====================================================
+   10. OCEAN / STARS CANVAS
+===================================================== */
+
+const canvas = document.getElementById("oceanCanvas");
+const ctx = canvas.getContext("2d");
+
+let canvasWidth = window.innerWidth;
+let canvasHeight = window.innerHeight;
+let particles = [];
+
+function resizeCanvas(){
+    const ratio = Math.min(window.devicePixelRatio || 1,2);
+
+    canvasWidth = window.innerWidth;
+    canvasHeight = window.innerHeight;
+
+    canvas.width = canvasWidth * ratio;
+    canvas.height = canvasHeight * ratio;
+
+    canvas.style.width = `${canvasWidth}px`;
+    canvas.style.height = `${canvasHeight}px`;
+
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+}
+
+window.addEventListener("resize",resizeCanvas);
+resizeCanvas();
+
+class Particle{
+    constructor(x,y,color){
+        this.x = x;
+        this.y = y;
+
+        const angle = Math.random()*Math.PI*2;
+        const speed = Math.random()*3+0.6;
+
+        this.vx = Math.cos(angle)*speed;
+        this.vy = Math.sin(angle)*speed;
+
+        this.alpha = 1;
+        this.size = Math.random()*2+0.5;
+        this.color = color;
+        this.decay = Math.random()*.018+.012;
+    }
+
+    update(){
+        this.x += this.vx;
+        this.y += this.vy;
+
+        this.vx *= .985;
+        this.vy *= .985;
+        this.vy += .025;
+
+        this.alpha -= this.decay;
+    }
+
+    draw(){
+        ctx.save();
+        ctx.globalAlpha = Math.max(0,this.alpha);
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+function createFirework(x,y){
+    const colors = ["#e8bd71","#ffe3a5","#69d9ed","#b7f2ff","#ffffff"];
+    const color = colors[Math.floor(Math.random()*colors.length)];
+    const count = window.innerWidth < 600 ? 35 : 60;
+
+    for(let i=0;i<count;i++){
+        particles.push(new Particle(x,y,color));
+    }
+}
+
+function launchFireworks(){
+    createFirework(
+        canvasWidth*(.2+Math.random()*.2),
+        canvasHeight*(.2+Math.random()*.25)
+    );
+
+    setTimeout(()=>{
+        createFirework(
+            canvasWidth*(.65+Math.random()*.15),
+            canvasHeight*(.2+Math.random()*.25)
+        );
+    },250);
+
+    setTimeout(()=>{
+        createFirework(canvasWidth*.5,canvasHeight*.22);
+    },500);
+}
+
+function animateCanvas(){
+    ctx.clearRect(0,0,canvasWidth,canvasHeight);
+
+    if(Math.random()<.15){
+        particles.push({
+            x:Math.random()*canvasWidth,
+            y:Math.random()*canvasHeight,
+            vx:0,
+            vy:-.15,
+            alpha:Math.random()*.45+.2,
+            size:Math.random()*1.1+.3,
+            color:"#b7f2ff",
+            decay:.003,
+
+            update(){
+                this.y += this.vy;
+                this.alpha -= this.decay;
+            },
+
+            draw(){
+                ctx.save();
+                ctx.globalAlpha = Math.max(0,this.alpha);
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+                ctx.fill();
+                ctx.restore();
+            }
+        });
+    }
+
+    particles.forEach((particle,index)=>{
+        particle.update();
+        particle.draw();
+
+        if(
+            particle.alpha<=0 ||
+            particle.y < -20 ||
+            particle.x < -20 ||
+            particle.x > canvasWidth+20
+        ){
+            particles.splice(index,1);
+        }
+    });
+
+    requestAnimationFrame(animateCanvas);
+}
+
+animateCanvas();
+
+/* =====================================================
+   11. TOAST
+===================================================== */
+
+function showToast(message){
+    clearTimeout(toastTimeout);
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    toastTimeout = setTimeout(()=>{
+        toast.classList.remove("show");
+    },2800);
+}
+
+/* =====================================================
+   12. WHATSAPP
+===================================================== */
+
+document.getElementById("whatsappButton").addEventListener("click",()=>{
+    /*
+      GANTI NOMOR INI DENGAN NOMOR WHATSAPP PENERIMA BALASAN.
+
+      Format internasional:
+      081234567890 -> 6281234567890
+    */
+
+    const whatsappNumber = "6281234567890";
+
+    const message =
+        "Makasih banyak yaa buat ucapan ulang tahunnya! ⚓🌊 " +
+        "Aku seneng banget kamu bikin kejutan ini khusus buat aku.";
+
+    const url =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url,"_blank","noopener,noreferrer");
+});
+
+/* =====================================================
+   13. RESTART
+===================================================== */
+
+function restartWebsite(){
+    currentSlide = 0;
+    websiteStarted = false;
+    cakeBlown = false;
+    giftOpened = false;
+
+    completedSlides.clear();
+    completedSlides.add(0);
+
+    document.querySelectorAll(".flame").forEach(flame=>{
+        flame.classList.remove("off");
+    });
+
+    cakeInstruction.textContent = "TAP THE CAKE TO BLOW OUT THE CANDLES";
+    cakeMessage.hidden = true;
+    cakeNextButton.disabled = true;
+
+    giftMessage.classList.remove("open");
+    giftInstruction.textContent = "TAP TO UNLOCK YOUR SECRET MESSAGE";
+    giftBox.querySelector(".gift-icon").textContent = "🎁";
+    giftNextButton.disabled = true;
+
+    quizSlides.forEach(index=>{
+        const slide = slides[index];
+        delete slide.dataset.completed;
+
+        slide.querySelectorAll(".quiz-option").forEach(option=>{
+            option.disabled = false;
+            option.classList.remove("correct","wrong");
+        });
+
+        slide.querySelector(".quiz-feedback").textContent = "";
+        slide.querySelector(".quiz-next").disabled = true;
+    });
+
+    welcomeOverlay.classList.remove("hidden");
+
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+
+    updateMusicButton(false);
+    updateNavigation();
+
+    showToast("Perjalanan dimulai kembali, Kapten.");
+}
+
+/* =====================================================
+   14. KEYBOARD NAVIGATION
+===================================================== */
+
+document.addEventListener("keydown",event=>{
+    if(!welcomeOverlay.classList.contains("hidden")) return;
+
+    if(
+        event.target &&
+        ["BUTTON","INPUT","TEXTAREA"].includes(event.target.tagName)
+    ){
+        return;
+    }
+
+    if(event.key === "ArrowRight" && currentSlide < totalSlides-1){
+        goToSlide(currentSlide+1);
+    }
+
+    if(event.key === "ArrowLeft" && currentSlide > 0){
+        goToSlide(currentSlide-1);
+    }
+});
+
+/* =====================================================
+   15. INITIALIZE
+===================================================== */
+
+updateNavigation();
+</script>
+
+</body>
+</html>

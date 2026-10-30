@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DATA DIRI"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="25dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NIM"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtNim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="19231020"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maulana Syahputra"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Program Studi"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtProdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sistem Informasi"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Universitas"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtUniversitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Universitas Bina Sarana Informatika"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:layout_marginBottom="25dp" />
+
+        <Button
+            android:id="@+id/btnKembali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kembali" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,4 @@
+com.example.timestampproedit.test.app-androidTest-0 D:\TimeStampProEdit_AndroidStudio_Java\app\build\generated\res\resValues\androidTest\debug
+com.example.timestampproedit.test.app-mergeDebugAndroidTestResources-1 D:\TimeStampProEdit_AndroidStudio_Java\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.timestampproedit.test.app-mergeDebugAndroidTestResources-2 D:\TimeStampProEdit_AndroidStudio_Java\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.timestampproedit.test.app-debugAndroidTest-3 D:\TimeStampProEdit_AndroidStudio_Java\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

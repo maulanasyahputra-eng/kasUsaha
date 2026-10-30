@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+
+    android:gravity="center"
+
+    android:padding="28dp">
+
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Verifikasi Nomor"
+
+        android:textSize="28sp"
+
+        android:textStyle="bold"
+
+        android:layout_marginBottom="10dp"/>
+
+
+    <TextView
+
+        android:id="@+id/phoneText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="OTP dikirim ke nomor"
+
+        android:textSize="15sp"
+
+        android:layout_marginBottom="30dp"/>
+
+
+    <EditText
+
+        android:id="@+id/otpInput"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:hint="Masukkan 6 digit OTP"
+
+        android:inputType="number"
+
+        android:maxLength="6"
+
+        android:gravity="center"
+
+        android:textSize="24sp"
+
+        android:padding="16dp"/>
+
+
+    <Button
+
+        android:id="@+id/verifyButton"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Verifikasi"
+
+        android:textAllCaps="false"
+
+        android:layout_marginTop="20dp"/>
+
+
+    <ProgressBar
+
+        android:id="@+id/progressBar"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:visibility="gone"
+
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

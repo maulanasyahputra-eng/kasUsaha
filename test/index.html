@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Cheat Sheet - HTML, CSS & JS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Web Dev Cheat Sheet</h1>
+        <p>Kamus lengkap tag HTML, properti CSS, dan fungsi JavaScript beserta contoh penulisannya.</p>
+        
+        <!-- Search & Filter Bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari tag, properti, atau fungsi (misal: flex, input, map, querySelector)...">
+        </div>
+
+        <div class="filter-tabs">
+            <button class="tab-btn active" data-target="all">Semua</button>
+            <button class="tab-btn" data-target="html">HTML</button>
+            <button class="tab-btn" data-target="css">CSS</button>
+            <button class="tab-btn" data-target="js">JavaScript</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ==================== SECTION HTML ==================== -->
+        <section class="cheat-section" data-category="html">
+            <div class="section-title">
+                <h2>HTML Cheat Sheet</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Struktur Utama & Metadata</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>&lt;!DOCTYPE html&gt;</code></div>
+                            <span class="fungsi">Deklarasi versi dokumen HTML5.</span>
+                            <div class="contoh">Contoh: <code>&lt;!DOCTYPE html&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;html&gt;</code></div>
+                            <span class="fungsi">Elemen akar (root) pembungkus seluruh dokumen HTML.</span>
+                            <div class="contoh">Contoh: <code>&lt;html lang="id"&gt; ... &lt;/html&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;head&gt;</code></div>
+                            <span class="fungsi">Wadah metadata, judul, file CSS, dan skrip yang tidak tampil di layar.</span>
+                            <div class="contoh">Contoh: <code>&lt;head&gt; ... &lt;/head&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;title&gt;</code></div>
+                            <span class="fungsi">Menentukan judul halaman pada tab browser.</span>
+                            <div class="contoh">Contoh: <code>&lt;title&gt;Halaman Utama Saya&lt;/title&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;meta&gt;</code></div>
+                            <span class="fungsi">Menyimpan metadata (charset, viewport responsif, SEO).</span>
+                            <div class="contoh">Contoh: <code>&lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;link&gt;</code></div>
+                            <span class="fungsi">Menghubungkan berkas luar (seperti file CSS atau favicon).</span>
+                            <div class="contoh">Contoh: <code>&lt;link rel="stylesheet" href="style.css"&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;style&gt;</code></div>
+                            <span class="fungsi">Menulis kode CSS internal di dalam file HTML.</span>
+                            <div class="contoh">Contoh: <code>&lt;style&gt; h1 { color: red; } &lt;/style&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;script&gt;</code></div>
+                            <span class="fungsi">Menulis atau memanggil file skrip JavaScript.</span>
+                            <div class="contoh">Contoh: <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;noscript&gt;</code></div>
+                            <span class="fungsi">Teks alternatif jika JavaScript disembunyikan/dinonaktifkan oleh browser.</span>
+                            <div class="contoh">Contoh: <code>&lt;noscript&gt;Aktifkan JavaScript di browser Anda.&lt;/noscript&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;body&gt;</code></div>
+                            <span class="fungsi">Menampung seluruh isi konten visual yang tampak di layar web.</span>
+                            <div class="contoh">Contoh: <code>&lt;body&gt; &lt;h1&gt;Halo Dunia&lt;/h1&gt; &lt;/body&gt;</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2. Layout Semantik & Struktur Halaman</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>&lt;header&gt;</code></div>
+                            <span class="fungsi">Bagian kepala/atas halaman atau seksi.</span>
+                            <div class="contoh">Contoh: <code>&lt;header&gt; &lt;h1&gt;Logo & Judul Web&lt;/h1&gt; &lt;/header&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;nav&gt;</code></div>
+                            <span class="fungsi">Area tempat kumpulan menu navigasi.</span>
+                            <div class="contoh">Contoh: <code>&lt;nav&gt; &lt;a href="#home"&gt;Home&lt;/a&gt; | &lt;a href="#about"&gt;About&lt;/a&gt; &lt;/nav&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;main&gt;</code></div>
+                            <span class="fungsi">Menampung konten utama yang unik dalam satu halaman.</span>
+                            <div class="contoh">Contoh: <code>&lt;main&gt; &lt;p&gt;Ini artikel utama.&lt;/p&gt; &lt;/main&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;section&gt;</code></div>
+                            <span class="fungsi">Menandai seksi/bab spesifik dalam halaman.</span>
+                            <div class="contoh">Contoh: <code>&lt;section&gt; &lt;h2&gt;Layanan Kami&lt;/h2&gt; &lt;/section&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;article&gt;</code></div>
+                            <span class="fungsi">Menampung konten mandiri (postingan blog, artikel berita, komentar).</span>
+                            <div class="contoh">Contoh: <code>&lt;article&gt; &lt;h2&gt;Judul Berita&lt;/h2&gt; &lt;p&gt;Isi berita...&lt;/p&gt; &lt;/article&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;aside&gt;</code></div>
+                            <span class="fungsi">Menampung konten sampingan (sidebar, iklan, link terkait).</span>
+                            <div class="contoh">Contoh: <code>&lt;aside&gt; &lt;h3&gt;Artikel Populer&lt;/h3&gt; &lt;/aside&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;footer&gt;</code></div>
+                            <span class="fungsi">Bagian kaki/bawah dari halaman atau seksi.</span>
+                            <div class="contoh">Contoh: <code>&lt;footer&gt; &lt;p&gt;&copy; 2026 Hak Cipta Dilindungi.&lt;/p&gt; &lt;/footer&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;div&gt;</code></div>
+                            <span class="fungsi">Kontainer blok umum untuk mengelompokkan elemen lain.</span>
+                            <div class="contoh">Contoh: <code>&lt;div class="kartu"&gt; &lt;p&gt;Teks di dalam kotak&lt;/p&gt; &lt;/div&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;span&gt;</code></div>
+                            <span class="fungsi">Kontainer inline untuk mengelompokkan sebagian teks.</span>
+                            <div class="contoh">Contoh: <code>Saya suka &lt;span style="color:red;"&gt;merah&lt;/span&gt;.</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>3. Teks & Format Konten</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>&lt;h1&gt; sampai &lt;h6&gt;</code></div>
+                            <span class="fungsi">Judul bab bertingkat (&lt;h1&gt; terbesar, &lt;h6&gt; terkecil).</span>
+                            <div class="contoh">Contoh: <code>&lt;h1&gt;Judul Utama&lt;/h1&gt; &lt;h2&gt;Sub Judul&lt;/h2&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;p&gt;</code></div>
+                            <span class="fungsi">Membuat paragraf teks.</span>
+                            <div class="contoh">Contoh: <code>&lt;p&gt;Ini adalah sebuah paragraf teks biasa.&lt;/p&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;strong&gt;</code> & <code>&lt;b&gt;</code></div>
+                            <span class="fungsi">Menebalkan teks (strong = semantik penting, b = dekoratif visual).</span>
+                            <div class="contoh">Contoh: <code>&lt;strong&gt;Peringatan penting!&lt;/strong&gt; &lt;b&gt;Teks tebal&lt;/b&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;em&gt;</code> & <code>&lt;i&gt;</code></div>
+                            <span class="fungsi">Memiringkan teks (em = penekanan makna, i = dekoratif visual).</span>
+                            <div class="contoh">Contoh: <code>&lt;em&gt;Harap dibaca teliti.&lt;/em&gt; &lt;i&gt;Ceteris paribus&lt;/i&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;mark&gt;</code></div>
+                            <span class="fungsi">Memberikan warna sorotan (highlight) pada teks.</span>
+                            <div class="contoh">Contoh: <code>Kata kunci ini &lt;mark&gt;penting&lt;/mark&gt;.</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;small&gt;</code></div>
+                            <span class="fungsi">Mengecilkan ukuran cetak teks (misal: syarat & ketentuan).</span>
+                            <div class="contoh">Contoh: <code>&lt;small&gt;*Syarat dan ketentuan berlaku.&lt;/small&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;del&gt;</code> & <code>&lt;ins&gt;</code></div>
+                            <span class="fungsi">Menandai teks yang dihapus/dicoret (del) atau ditambahkan/garis bawah (ins).</span>
+                            <div class="contoh">Contoh: <code>&lt;del&gt;Rp 100.000&lt;/del&gt; &lt;ins&gt;Rp 50.000&lt;/ins&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;sub&gt;</code> & <code>&lt;sup&gt;</code></div>
+                            <span class="fungsi">Teks subscript (bawah) dan superscript (atas/pangkat).</span>
+                            <div class="contoh">Contoh: <code>H&lt;sub&gt;2&lt;/sub&gt;O | 100 m&lt;sup&gt;2&lt;/sup&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;pre&gt;</code> & <code>&lt;code&gt;</code></div>
+                            <span class="fungsi">Teks terformat presisi dan potongan kode komputer.</span>
+                            <div class="contoh">Contoh: <code>Ketik &lt;code&gt;npm install&lt;/code&gt; untuk memasang.</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;blockquote&gt;</code> & <code>&lt;q&gt;</code></div>
+                            <span class="fungsi">Kutipan panjang berbentuk blok dan kutipan singkat inline.</span>
+                            <div class="contoh">Contoh: <code>&lt;blockquote&gt;"Pendidikan adalah senjata."&lt;/blockquote&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;abbr&gt;</code></div>
+                            <span class="fungsi">Menandai singkatan beserta penjelasannya saat kursor diarahkan.</span>
+                            <div class="contoh">Contoh: <code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;br&gt;</code> & <code>&lt;hr&gt;</code></div>
+                            <span class="fungsi">Pindah baris baru (br) dan garis lurus horizontal pemisah topik (hr).</span>
+                            <div class="contoh">Contoh: <code>Baris Pertama&lt;br&gt;Baris Kedua &lt;hr&gt;</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>4. Tautan & Media</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>&lt;a&gt;</code></div>
+                            <span class="fungsi">Membuat tautan/hyperlink menuju web lain, file, atau bagian dokumen.</span>
+                            <div class="contoh">Contoh: <code>&lt;a href="https://google.com" target="_blank"&gt;Buka Google&lt;/a&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;img&gt;</code></div>
+                            <span class="fungsi">Menampilkan gambar pada halaman.</span>
+                            <div class="contoh">Contoh: <code>&lt;img src="pemandangan.jpg" alt="Foto Pemandangan" width="300"&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;audio&gt;</code></div>
+                            <span class="fungsi">Memutar file suara/audio.</span>
+                            <div class="contoh">Contoh: <code>&lt;audio src="musik.mp3" controls&gt;&lt;/audio&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;video&gt;</code> & <code>&lt;source&gt;</code></div>
+                            <span class="fungsi">Memutar file video dan menentukan opsi file sumber media.</span>
+                            <div class="contoh">Contoh: <code>&lt;video controls&gt; &lt;source src="video.mp4" type="video/mp4"&gt; &lt;/video&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;iframe&gt;</code></div>
+                            <span class="fungsi">Menampilkan halaman web lain/video YouTube di dalam halaman.</span>
+                            <div class="contoh">Contoh: <code>&lt;iframe src="https://www.wikipedia.org" width="100%" height="300"&gt;&lt;/iframe&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;svg&gt;</code> & <code>&lt;canvas&gt;</code></div>
+                            <span class="fungsi">Grafik vektor (SVG) dan area kanvas menggambar via JavaScript.</span>
+                            <div class="contoh">Contoh: <code>&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>5. Formulir & Input</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>&lt;form&gt;</code></div>
+                            <span class="fungsi">Wadah pengumpulan dan pengiriman data dari pengguna.</span>
+                            <div class="contoh">Contoh: <code>&lt;form action="/kirim.php" method="POST"&gt; ... &lt;/form&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;label&gt;</code> & <code>&lt;input&gt;</code></div>
+                            <span class="fungsi">Teks petunjuk penjelas dan elemen masukan data pengguna.</span>
+                            <div class="contoh">Contoh: <code>&lt;label for="user"&gt;Nama:&lt;/label&gt; &lt;input type="text" id="user"&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;textarea&gt;</code></div>
+                            <span class="fungsi">Kotak isian teks multi-baris (untuk tulisan panjang).</span>
+                            <div class="contoh">Contoh: <code>&lt;textarea rows="4" placeholder="Tulis pesan..."&gt;&lt;/textarea&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;button&gt;</code></div>
+                            <span class="fungsi">Tombol interaktif yang dapat diklik.</span>
+                            <div class="contoh">Contoh: <code>&lt;button type="submit"&gt;Kirim Data&lt;/button&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;select&gt;</code> & <code>&lt;option&gt;</code></div>
+                            <span class="fungsi">Membuat menu pilihan drop-down.</span>
+                            <div class="contoh">Contoh: <code>&lt;select name="kota"&gt; &lt;option value="jkt"&gt;Jakarta&lt;/option&gt; &lt;/select&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;fieldset&gt;</code> & <code>&lt;legend&gt;</code></div>
+                            <span class="fungsi">Mengelompokkan elemen formulir ke dalam satu garis kotak ber-judul.</span>
+                            <div class="contoh">Contoh: <code>&lt;fieldset&gt; &lt;legend&gt;Data Pribadi&lt;/legend&gt; &lt;/fieldset&gt;</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>6. Tabel, Daftar & Elemen Interaktif</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code></div>
+                            <span class="fungsi">Menyusun tabel data dengan baris (tr), header sel (th), dan sel isi (td).</span>
+                            <div class="contoh">Contoh: <code>&lt;table border="1"&gt; &lt;tr&gt; &lt;th&gt;No&lt;/th&gt; &lt;td&gt;1&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code></div>
+                            <span class="fungsi">Membuat daftar berpoin (ul) atau berurutan angka/huruf (ol).</span>
+                            <div class="contoh">Contoh: <code>&lt;ul&gt; &lt;li&gt;Apel&lt;/li&gt; &lt;li&gt;Jeruk&lt;/li&gt; &lt;/ul&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;details&gt;</code> & <code>&lt;summary&gt;</code></div>
+                            <span class="fungsi">Membuat bagian ringkasan yang bisa diklik untuk buka/tutup (accordion).</span>
+                            <div class="contoh">Contoh: <code>&lt;details&gt; &lt;summary&gt;Baca&lt;/summary&gt; &lt;p&gt;Isi teks&lt;/p&gt; &lt;/details&gt;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>&lt;dialog&gt;</code></div>
+                            <span class="fungsi">Membuat kotak dialog/pop-up modal bawaan browser.</span>
+                            <div class="contoh">Contoh: <code>&lt;dialog open&gt; &lt;p&gt;Pesan Pop-up&lt;/p&gt; &lt;/dialog&gt;</code></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION CSS ==================== -->
+        <section class="cheat-section" data-category="css">
+            <div class="section-title">
+                <h2>CSS Cheat Sheet</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Selektor & Pseudo-class</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>* (Universal Selector)</code></div>
+                            <span class="fungsi">Memilih seluruh elemen HTML di dalam halaman tanpa terkecuali.</span>
+                            <div class="contoh">Contoh: <code>* { margin: 0; padding: 0; box-sizing: border-box; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>.nama-class (Class Selector)</code></div>
+                            <span class="fungsi">Memilih elemen berdasarkan nama kelas (dapat dipakai berulang kali).</span>
+                            <div class="contoh">Contoh: <code>.tombol-utama { background-color: blue; color: white; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>#nama-id (ID Selector)</code></div>
+                            <span class="fungsi">Memilih elemen berdasarkan ID unik (hanya boleh 1 per halaman).</span>
+                            <div class="contoh">Contoh: <code>#header-layar { height: 80px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>element (Tag Selector)</code></div>
+                            <span class="fungsi">Memilih seluruh elemen berdasarkan nama tag HTML-nya.</span>
+                            <div class="contoh">Contoh: <code>p { line-height: 1.5; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>:hover</code></div>
+                            <span class="fungsi">Memberikan gaya saat kursor mouse diarahkan di atas elemen.</span>
+                            <div class="contoh">Contoh: <code>button:hover { background-color: green; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>:focus</code></div>
+                            <span class="fungsi">Memberikan gaya saat elemen sedang aktif atau diklik (misal input teks).</span>
+                            <div class="contoh">Contoh: <code>input:focus { border-color: #007bff; outline: none; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>:nth-child(n)</code></div>
+                            <span class="fungsi">Memilih elemen anak ke-n berdasarkan urutan posisinya.</span>
+                            <div class="contoh">Contoh: <code>li:nth-child(odd) { background-color: #f2f2f2; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>::before / ::after</code></div>
+                            <span class="fungsi">Menyisipkan konten dekoratif buatan sebelum atau sesudah elemen.</span>
+                            <div class="contoh">Contoh: <code>.judul::before { content: "★ "; color: gold; }</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2. Tipografi & Teks</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>font-family</code></div>
+                            <span class="fungsi">Menentukan jenis font atau keluarga huruf yang digunakan.</span>
+                            <div class="contoh">Contoh: <code>body { font-family: 'Arial', sans-serif; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>font-size</code></div>
+                            <span class="fungsi">Mengatur ukuran besar/kecilnya huruf.</span>
+                            <div class="contoh">Contoh: <code>h1 { font-size: 32px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>font-weight</code></div>
+                            <span class="fungsi">Mengatur tingkat ketebalan huruf (100 sampai 900 atau kata kunci).</span>
+                            <div class="contoh">Contoh: <code>p.tebal { font-weight: bold; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>font-style</code></div>
+                            <span class="fungsi">Mengubah gaya tampilan huruf menjadi miring atau normal.</span>
+                            <div class="contoh">Contoh: <code>span.miring { font-style: italic; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>color</code></div>
+                            <span class="fungsi">Mengatur warna teks.</span>
+                            <div class="contoh">Contoh: <code>h2 { color: #333333; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>text-align</code></div>
+                            <span class="fungsi">Mengatur perataan posisi baris teks (kiri, tengah, kanan, rata kiri-kanan).</span>
+                            <div class="contoh">Contoh: <code>.judul-tengah { text-align: center; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>text-decoration</code></div>
+                            <span class="fungsi">Menambah atau menghapus garis hiasan pada teks (seperti garis bawah/coret).</span>
+                            <div class="contoh">Contoh: <code>a { text-decoration: none; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>text-transform</code></div>
+                            <span class="fungsi">Mengatur huruf kapital pada teks (kapital semua, kecil semua, atau huruf awal).</span>
+                            <div class="contoh">Contoh: <code>h3 { text-transform: uppercase; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>line-height</code> & <code>letter-spacing</code></div>
+                            <span class="fungsi">Mengatur spasi vertikal antarbaris teks dan jarak horizontal antarhuruf.</span>
+                            <div class="contoh">Contoh: <code>p { line-height: 1.6; letter-spacing: 2px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>text-shadow</code></div>
+                            <span class="fungsi">Memberi efek bayangan pada teks.</span>
+                            <div class="contoh">Contoh: <code>h1 { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>3. Warna, Latar Belakang & Border</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>background-color</code></div>
+                            <span class="fungsi">Mengatur warna latar belakang elemen.</span>
+                            <div class="contoh">Contoh: <code>.kartu { background-color: #ffffff; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>background-image</code></div>
+                            <span class="fungsi">Memasang gambar atau gradasi warna sebagai latar belakang.</span>
+                            <div class="contoh">Contoh: <code>.banner { background-image: url('gambar.jpg'); }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>background-size</code> & <code>position</code></div>
+                            <span class="fungsi">Mengatur ukuran (cover, contain) dan posisi awal gambar latar.</span>
+                            <div class="contoh">Contoh: <code>.banner { background-size: cover; background-position: center; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>background-repeat</code></div>
+                            <span class="fungsi">Mengatur apakah gambar latar belakang diulang atau tidak.</span>
+                            <div class="contoh">Contoh: <code>body { background-repeat: no-repeat; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>border</code> & <code>border-radius</code></div>
+                            <span class="fungsi">Garis tepi (tebal jenis warna) dan kelengkungan sudut kotak.</span>
+                            <div class="contoh">Contoh: <code>.kotak { border: 2px solid #000; border-radius: 8px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>outline</code></div>
+                            <span class="fungsi">Garis di luar border yang tidak memakan ruang layout saat fokus.</span>
+                            <div class="contoh">Contoh: <code>input { outline: 2px solid blue; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>opacity</code></div>
+                            <span class="fungsi">Mengatur tingkat transparansi elemen (nilai 0.0 sampai 1.0).</span>
+                            <div class="contoh">Contoh: <code>.gambar-transparan { opacity: 0.7; }</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>4. Box Model & Ukuran (Sizing)</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>width / height</code></div>
+                            <span class="fungsi">Menentukan lebar dan tinggi suatu elemen.</span>
+                            <div class="contoh">Contoh: <code>.kotak { width: 300px; height: 200px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>max-width / max-height</code></div>
+                            <span class="fungsi">Menentukan batas maksimal lebar atau tinggi yang diperbolehkan.</span>
+                            <div class="contoh">Contoh: <code>.kontainer { max-width: 1200px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>min-width / min-height</code></div>
+                            <span class="fungsi">Menentukan batas minimal lebar atau tinggi elemen.</span>
+                            <div class="contoh">Contoh: <code>.hero-section { min-height: 100vh; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>padding</code></div>
+                            <span class="fungsi">Jarak bagian dalam antara isi elemen dengan garis tepi (border).</span>
+                            <div class="contoh">Contoh: <code>.kartu { padding: 20px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>margin</code></div>
+                            <span class="fungsi">Jarak bagian luar antara elemen dengan elemen di sekitarnya.</span>
+                            <div class="contoh">Contoh: <code>.kartu { margin: 15px auto; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>box-sizing</code></div>
+                            <span class="fungsi">Mengatur metode perhitungan ukuran kotak agar padding tidak menambah lebar.</span>
+                            <div class="contoh">Contoh: <code>* { box-sizing: border-box; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>box-shadow</code></div>
+                            <span class="fungsi">Memberikan efek bayangan di luar atau di dalam kotak elemen.</span>
+                            <div class="contoh">Contoh: <code>.kartu { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>5. Tata Letak (Display, Posisi, Flexbox & Grid)</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>display</code></div>
+                            <span class="fungsi">Menentukan mode sifat tampilan elemen (block, inline, flex, grid, none).</span>
+                            <div class="contoh">Contoh: <code>.sembunyi { display: none; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>position</code></div>
+                            <span class="fungsi">Menentukan aturan metode penempatan posisi elemen di layar.</span>
+                            <div class="contoh">Contoh: <code>.navbar-tetap { position: fixed; top: 0; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>top / bottom / left / right</code></div>
+                            <span class="fungsi">Koordinat pergeseran posisi pada elemen bermode position.</span>
+                            <div class="contoh">Contoh: <code>.modal-pop-up { top: 50%; left: 50%; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>z-index</code></div>
+                            <span class="fungsi">Mengatur urutan penumpukan elemen mana yang ada di depan/belakang.</span>
+                            <div class="contoh">Contoh: <code>.menu-pop-up { z-index: 999; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>overflow</code></div>
+                            <span class="fungsi">Mengatur perlakuan konten yang ukurannya melebihi batas kotaknya.</span>
+                            <div class="contoh">Contoh: <code>.kotak-scroll { overflow: auto; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>display: flex</code> & <code>flex-direction</code></div>
+                            <span class="fungsi">Mengaktifkan tata letak fleksibel 1D dan arah susunannya (row/column).</span>
+                            <div class="contoh">Contoh: <code>.kontainer-flex { display: flex; flex-direction: row; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>justify-content</code> & <code>align-items</code></div>
+                            <span class="fungsi">Perataan elemen flex horizontal (sumbu utama) & vertikal (sumbu silang).</span>
+                            <div class="contoh">Contoh: <code>.flex-tengah { justify-content: center; align-items: center; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>gap</code></div>
+                            <span class="fungsi">Menentukan jarak antar-item di dalam kontainer Flexbox atau Grid.</span>
+                            <div class="contoh">Contoh: <code>.kontainer-flex { gap: 16px; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>display: grid</code></div>
+                            <span class="fungsi">Mengaktifkan tata letak berbasis baris dan kolom dua dimensi.</span>
+                            <div class="contoh">Contoh: <code>.galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>6. Animasi, Transformasi & Variabel</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>transform</code></div>
+                            <span class="fungsi">Mengubah posisi, rotasi, skala, atau kemiringan bentuk elemen.</span>
+                            <div class="contoh">Contoh: <code>.kartu:hover { transform: scale(1.05) translateY(-5px); }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>transition</code></div>
+                            <span class="fungsi">Memperhalus durasi perubahan properti CSS saat terjadi interaksi.</span>
+                            <div class="contoh">Contoh: <code>.tombol { transition: background-color 0.3s ease; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>@keyframes</code> & <code>animation</code></div>
+                            <span class="fungsi">Mendefinisikan tahapan alur animasi kustom dan menjalankannya pada elemen.</span>
+                            <div class="contoh">Contoh: <code>.ikon-loading { animation: putar 1s infinite linear; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>cursor</code></div>
+                            <span class="fungsi">Mengubah bentuk kursor mouse saat diarahkan ke atas elemen.</span>
+                            <div class="contoh">Contoh: <code>.tombol-klik { cursor: pointer; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>filter</code></div>
+                            <span class="fungsi">Memberikan efek visual grafis pada gambar/elemen (buram, hitam putih, dll).</span>
+                            <div class="contoh">Contoh: <code>img.hitam-putih { filter: grayscale(100%); }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>--nama-variabel & var()</code></div>
+                            <span class="fungsi">Membuat dan memanggil nilai variabel khusus yang dapat digunakan berulang.</span>
+                            <div class="contoh">Contoh: <code>:root { --warna: #007bff; } h1 { color: var(--warna); }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>@media (Media Queries)</code></div>
+                            <span class="fungsi">Menyesuaikan aturan CSS berdasarkan ukuran layar perangkat (responsif).</span>
+                            <div class="contoh">Contoh: <code>@media (max-width: 768px) { .sidebar { display: none; } }</code></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION JAVASCRIPT ==================== -->
+        <section class="cheat-section" data-category="js">
+            <div class="section-title">
+                <h2>JavaScript Cheat Sheet</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Deklarasi Variabel & Tipe Data</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>let</code>, <code>const</code>, <code>var</code></div>
+                            <span class="fungsi">Deklarasi variabel (let = diubah, const = tetap, var = cara lama).</span>
+                            <div class="contoh">Contoh: <code>let umur = 20; const pi = 3.14; var nama = "Budi";</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>String</code> & <code>Number</code></div>
+                            <span class="fungsi">Tipe data teks (diapit petik/backtick) dan tipe data angka.</span>
+                            <div class="contoh">Contoh: <code>let pesan = "Halo"; let harga = 50000;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>Boolean</code></div>
+                            <span class="fungsi">Tipe data logika yang hanya bernilai benar (true) atau salah (false).</span>
+                            <div class="contoh">Contoh: <code>let isActive = true;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>Array</code></div>
+                            <span class="fungsi">Tipe data koleksi untuk menyimpan banyak nilai sekaligus dalam satu variabel.</span>
+                            <div class="contoh">Contoh: <code>let buah = ["Apel", "Jeruk", "Mangga"];</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>Object</code></div>
+                            <span class="fungsi">Tipe data struktur pasangan kunci-nilai (key-value) untuk mendeskripsikan entitas.</span>
+                            <div class="contoh">Contoh: <code>let user = { nama: "Andi", umur: 25, kota: "Jakarta" };</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2. Operator & Pengondisian</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>Operator Aritmatika (+, -, *, /, %, **)</code></div>
+                            <span class="fungsi">Melakukan operasi matematika (penjumlahan, pengurangan, sisa bagi, pangkat).</span>
+                            <div class="contoh">Contoh: <code>let total = 10 + 5; let sisa = 10 % 3;</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>Operator Perbandingan (==, ===, !=, !==, >, <)</code></div>
+                            <span class="fungsi">Membandingkan dua nilai. `===` membandingkan nilai beserta tipe datanya.</span>
+                            <div class="contoh">Contoh: <code>console.log(5 === "5"); // false (beda tipe data)</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>Operator Logika (&&, ||, !)</code></div>
+                            <span class="fungsi">Menghubungkan logika (DAN / &&, ATAU / ||, NEGASI / !).</span>
+                            <div class="contoh">Contoh: <code>let lulus = (nilai >= 75) && (absensi >= 80);</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>if ... else if ... else</code></div>
+                            <span class="fungsi">Menjalankan blok kode tertentu berdasarkan evaluasi kondisi logika.</span>
+                            <div class="contoh">Contoh: <code>if (nilai >= 80) { console.log("A"); } else { console.log("B"); }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>switch</code> & <code>Ternary Operator</code></div>
+                            <span class="fungsi">Pilihan cabang logika kecocokan nilai & pengondisian if-else ringkas.</span>
+                            <div class="contoh">Contoh: <code>let status = (umur >= 17) ? "Dewasa" : "Anak";</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>3. Perulangan & Fungsi</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>for</code> & <code>while</code></div>
+                            <span class="fungsi">Mengulang kode sejumlah hitungan tertentu atau selama kondisi benar.</span>
+                            <div class="contoh">Contoh: <code>for (let i = 0; i < 5; i++) { console.log(i); }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>for ... of</code> & <code>for ... in</code></div>
+                            <span class="fungsi">Perulangan setiap item di Array (for...of) atau kunci di Objek (for...in).</span>
+                            <div class="contoh">Contoh: <code>for (let item of buah) { console.log(item); }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>Function Declaration</code></div>
+                            <span class="fungsi">Mendefinisikan fungsi umum yang dapat dipanggil di bagian mana saja.</span>
+                            <div class="contoh">Contoh: <code>function sapa(nama) { return `Halo, ${nama}!`; }</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>Arrow Function</code></div>
+                            <span class="fungsi">Sintaks ringkas modern untuk mendefinisikan fungsi.</span>
+                            <div class="contoh">Contoh: <code>const tambah = (a, b) => a + b;</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>4. Method Array & String Bawaan</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>push()</code> / <code>pop()</code> & <code>shift()</code> / <code>unshift()</code></div>
+                            <span class="fungsi">Menambah/menghapus elemen di akhir atau di awal array.</span>
+                            <div class="contoh">Contoh: <code>buah.push("Pisang"); buah.shift();</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>forEach()</code>, <code>map()</code>, <code>filter()</code></div>
+                            <span class="fungsi">Perulangan array, transformasi item ke array baru, dan penyaringan kriteria.</span>
+                            <div class="contoh">Contoh: <code>let ganda = angka.map(x => x * 2);</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>includes()</code></div>
+                            <span class="fungsi">Memeriksa apakah array/string memiliki nilai tertentu (true/false).</span>
+                            <div class="contoh">Contoh: <code>buah.includes("Apel"); // true</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>toUpperCase()</code> & <code>toLowerCase()</code></div>
+                            <span class="fungsi">Mengubah huruf menjadi kapital semua atau huruf kecil semua.</span>
+                            <div class="contoh">Contoh: <code>let teks = "Halo".toUpperCase(); // "HALO"</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>split()</code> & <code>replace()</code></div>
+                            <span class="fungsi">Memecah string menjadi array dan mengganti sebagian teks.</span>
+                            <div class="contoh">Contoh: <code>"A,B,C".split(","); "Halo Budi".replace("Budi", "Andi");</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>5. Manipulasi DOM (Document Object Model)</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>document.getElementById()</code></div>
+                            <span class="fungsi">Mengambil satu elemen HTML berdasarkan ID uniknya.</span>
+                            <div class="contoh">Contoh: <code>const header = document.getElementById("main-header");</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>document.querySelector()</code> & <code>querySelectorAll()</code></div>
+                            <span class="fungsi">Mengambil satu atau semua elemen HTML berdasarkan selektor CSS.</span>
+                            <div class="contoh">Contoh: <code>const tombol = document.querySelector(".btn-submit");</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>addEventListener()</code></div>
+                            <span class="fungsi">Memicu fungsi reaksi saat terjadi peristiwa/event tertentu (klik, ketik, submit).</span>
+                            <div class="contoh">Contoh: <code>tombol.addEventListener("click", () => alert("Klik!"));</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>innerHTML</code> & <code>textContent</code></div>
+                            <span class="fungsi">Mengubah konten kode HTML di dalam elemen atau teks polos.</span>
+                            <div class="contoh">Contoh: <code>header.innerHTML = "&lt;span&gt;Judul Baru&lt;/span&gt;";</code></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>6. JavaScript Asinkronus & Waktu</h3>
+                    <ul>
+                        <li>
+                            <div class="item-head"><code>setTimeout()</code></div>
+                            <span class="fungsi">Menjalankan fungsi satu kali setelah penundaan waktu tertentu (milidetik).</span>
+                            <div class="contoh">Contoh: <code>setTimeout(() => console.log("Halo"), 2000);</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>setInterval()</code></div>
+                            <span class="fungsi">Menjalankan fungsi secara berulang setiap interval waktu tertentu.</span>
+                            <div class="contoh">Contoh: <code>setInterval(() => console.log("Detik"), 1000);</code></div>
+                        </li>
+                        <li>
+                            <div class="item-head"><code>fetch()</code> & <code>async / await</code></div>
+                            <span class="fungsi">Mengambil atau mengirim data ke server/API secara asinkronus.</span>
+                            <div class="contoh">Contoh: <code>async function get() { const r = await fetch(url); }</code></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

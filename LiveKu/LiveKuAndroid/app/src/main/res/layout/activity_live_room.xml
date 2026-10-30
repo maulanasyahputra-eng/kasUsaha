@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#07070B">
+
+    <!-- ====================================== -->
+    <!-- 1. AREA LIVE / VIDEO (Full Layar di Belakang) -->
+    <!-- ====================================== -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#12121A">
+
+        <!-- VIDEO PLACEHOLDER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="📹"
+                android:textSize="36sp"
+                android:background="#1E1E2C"
+                android:elevation="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="LIVEKU"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvLiveTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Live Streaming"
+                android:textColor="#85859E"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- GRADIENT OVERLAY (Supaya bagian bawah gelap transparan agar chat & tombol terlihat jelas) -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_live_chat_gradient"/>
+    </FrameLayout>
+
+
+    <!-- ====================================== -->
+    <!-- 2. KONTROL & CHAT MENGAMBANG DI ATAS VIDEO -->
+    <!-- ====================================== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- TOP BAR (Floating & Transparan) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp"
+            android:background="@drawable/bg_live_top_gradient">
+
+            <!-- TOMBOL CLOSE -->
+            <Button
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="✕"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_circle_translucent"
+                android:stateListAnimator="@null"/>
+
+            <!-- INFO HOST -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/ivStreamerAvatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_report_image" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvStreamerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Live Host"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:ellipsize="end"/>
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="● LIVE"
+                        android:textColor="#FF2A85"
+                        android:textSize="9sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- JUMLAH PENONTON (Kapsul Semi-Transparan) -->
+            <TextView
+                android:id="@+id/tvViewerCount"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:text="👁 128"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:background="@drawable/bg_viewers_capsule"/>
+        </LinearLayout>
+
+        <!-- TOMBOL FOLLOW (Mengambang di Kanan Atas) -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnFollow"
+                android:layout_width="90dp"
+                android:layout_height="36dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:text="+ Follow"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:backgroundTint="#FF2A85"
+                android:stateListAnimator="@null"
+                app:cornerRadius="18dp"/>
+        </FrameLayout>
+
+
+        <!-- AREA KOMENTAR / CHAT (TRANSPARAN DI BAGIAN BAWAH) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:orientation="vertical"
+            android:paddingTop="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="6dp"
+                android:text="Live Chat"
+                android:textColor="#B0B0C0"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingHorizontal="12dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/commentContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="5dp"
+                        android:text="💬 Selamat datang di LiveKu!"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="5dp"
+                        android:text="🔥 Jangan lupa follow host!"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"/>
+                </LinearLayout>
+            </ScrollView>
+
+            <!-- INPUT KOMENTAR (Background Transparan Melayang) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="6dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#5512121C"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp">
+
+                    <EditText
+                        android:id="@+id/etComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="Ketik komentar..."
+                        android:paddingHorizontal="16dp"
+                        android:singleLine="true"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#9999AA"
+                        android:textSize="13sp"/>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btnSend"
+                    android:layout_width="70dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Kirim"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#7C4DFF"
+                    android:stateListAnimator="@null"
+                    app:cornerRadius="21dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- ACTION BAR (Bawah: Gift, Koin, Like) - Semi Transparan -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp"
+            android:background="#880A0A0F">
+
+            <!-- TOMBOL GIFT -->
+            <Button
+                android:id="@+id/btnGift"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="🎁 Gift"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:backgroundTint="#FF2A85"
+                android:stateListAnimator="@null"
+                app:cornerRadius="20dp"/>
+
+            <!-- INFORMASI KOIN -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="center"
+                android:text="💎 0 Coin"
+                android:textColor="#FFD700"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:background="#551C1C2A"/>
+
+            <!-- TOMBOL LIKE -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="❤️"
+                android:textSize="16sp"
+                android:backgroundTint="#55261A24"
+                android:stateListAnimator="@null"
+                app:cornerRadius="20dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

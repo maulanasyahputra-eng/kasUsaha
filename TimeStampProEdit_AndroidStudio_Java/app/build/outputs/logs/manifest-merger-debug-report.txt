@@ -1,0 +1,256 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:2:1-72:12
+MERGED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\04a2a372aec60b7362cc8c2e83c7fb5a\workspace\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\0001f39e6801d3887b51d702cbfd71e5\workspace\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\03b8e6e697552dd451bfb17cfecf3d6c\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\88d40ecdf360b07973cb362f5cf4ee79\workspace\transformed\tracing-1.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\d8cb9d1d286a4718543d8cd1f47f5962\workspace\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\072b3c255af1154c1ec8dcd2120d6e06\workspace\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\15b5e484448c8bba4e5e23c881b2c71e\workspace\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+	package
+		INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:5:5-65
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:5:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:6:5-71
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:6:22-68
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:9:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:10:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:13:5-107
+	android:maxSdkVersion
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:13:78-104
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:13:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:14:5-108
+	android:maxSdkVersion
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:14:79-105
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:14:22-78
+uses-permission#android.permission.READ_MEDIA_IMAGES
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:15:5-76
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:15:22-73
+uses-permission#android.permission.READ_MEDIA_VIDEO
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:16:5-75
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:16:22-72
+uses-feature#android.hardware.camera
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:19:5-21:36
+	android:required
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:21:9-33
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:20:9-47
+uses-feature#android.hardware.camera.autofocus
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:22:5-24:36
+	android:required
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:24:9-33
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:23:9-57
+uses-feature#android.hardware.microphone
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:25:5-27:36
+	android:required
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:27:9-33
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:26:9-51
+queries
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:29:5-39:15
+intent#action:name:android.media.action.IMAGE_CAPTURE
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:30:9-32:18
+action#android.media.action.IMAGE_CAPTURE
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:31:13-73
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:31:21-70
+intent#action:name:android.intent.action.GET_CONTENT
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:33:9-35:18
+action#android.intent.action.GET_CONTENT
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:34:13-72
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:34:21-69
+intent#action:name:android.intent.action.OPEN_DOCUMENT
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:36:9-38:18
+action#android.intent.action.OPEN_DOCUMENT
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:37:13-74
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:37:21-71
+application
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:41:5-70:19
+INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:41:5-70:19
+MERGED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\03b8e6e697552dd451bfb17cfecf3d6c\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\03b8e6e697552dd451bfb17cfecf3d6c\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\d8cb9d1d286a4718543d8cd1f47f5962\workspace\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\d8cb9d1d286a4718543d8cd1f47f5962\workspace\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:46:9-35
+	android:label
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:43:9-43
+	android:roundIcon
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:45:9-54
+	android:icon
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:44:9-43
+	android:allowBackup
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:42:9-35
+	android:theme
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:47:9-40
+provider#androidx.core.content.FileProvider
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:49:9-57:20
+	android:grantUriPermissions
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:53:13-47
+	android:authorities
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:51:13-76
+	android:exported
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:52:13-37
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:50:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:54:13-56:54
+	android:resource
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:56:17-51
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:55:17-67
+activity#com.example.timestampproedit.MainActivity
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:59:9-68:20
+	android:exported
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:61:13-36
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:60:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:63:13-66:29
+action#android.intent.action.MAIN
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:64:17-69
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:64:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:65:17-77
+	android:name
+		ADDED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:65:27-74
+uses-sdk
+INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+MERGED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\04a2a372aec60b7362cc8c2e83c7fb5a\workspace\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\04a2a372aec60b7362cc8c2e83c7fb5a\workspace\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\0001f39e6801d3887b51d702cbfd71e5\workspace\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\0001f39e6801d3887b51d702cbfd71e5\workspace\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\03b8e6e697552dd451bfb17cfecf3d6c\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\03b8e6e697552dd451bfb17cfecf3d6c\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\88d40ecdf360b07973cb362f5cf4ee79\workspace\transformed\tracing-1.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\88d40ecdf360b07973cb362f5cf4ee79\workspace\transformed\tracing-1.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\d8cb9d1d286a4718543d8cd1f47f5962\workspace\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\d8cb9d1d286a4718543d8cd1f47f5962\workspace\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\072b3c255af1154c1ec8dcd2120d6e06\workspace\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\072b3c255af1154c1ec8dcd2120d6e06\workspace\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\15b5e484448c8bba4e5e23c881b2c71e\workspace\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\15b5e484448c8bba4e5e23c881b2c71e\workspace\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+	android:targetSdkVersion
+		INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+permission#com.example.timestampproedit.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+uses-permission#com.example.timestampproedit.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\03b8e6e697552dd451bfb17cfecf3d6c\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\03b8e6e697552dd451bfb17cfecf3d6c\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92

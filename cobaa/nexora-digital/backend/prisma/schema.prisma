@@ -1,0 +1,522 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============ ENUMS ============
+
+enum RoleName {
+  CUSTOMER
+  ADMIN
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  EXPIRED
+  FAILED
+  REFUNDED
+}
+
+enum FulfillmentStatus {
+  QUEUED
+  PROCESSING
+  SUCCESS
+  FAILED
+  UNKNOWN
+}
+
+enum PaymentProvider {
+  MIDTRANS
+  WALLET
+  MANUAL
+}
+
+enum WalletLedgerType {
+  DEPOSIT
+  ORDER_PAYMENT
+  REFUND
+  ADJUSTMENT
+}
+
+enum LedgerStatus {
+  ENTRY
+  VOID
+}
+
+enum OrderKind {
+  TOPUP
+  SMM
+}
+
+enum ProductType {
+  TOPUP
+  SMM
+}
+
+enum WebhookStatus {
+  RECEIVED
+  PROCESSED
+  IGNORED
+  FAILED
+}
+
+enum ProviderTxStatus {
+  SENT
+  SUCCESS
+  FAILED
+  PENDING
+  UNKNOWN
+}
+
+enum DepositStatus {
+  PENDING
+  PAID
+  EXPIRED
+  FAILED
+}
+
+enum CouponType {
+  PERCENT
+  FIXED
+}
+
+// ============ MODELS ============
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String
+  role          RoleName  @default(CUSTOMER)
+  isActive      Boolean   @default(true)
+  failedLogins  Int       @default(0)
+  lockedUntil   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  wallet           Wallet?
+  orders           Order[]
+  payments         Payment[]
+  deposits         Deposit[]
+  notifications    Notification[]
+  auditLogs        AuditLog[]
+  sessions         Session[]
+  reviews          Review[]
+
+  @@index([email])
+}
+
+model Session {
+  id          String   @id @default(cuid())
+  userId      String
+  tokenHash   String   @unique
+  expiresAt   DateTime
+  revokedAt   DateTime?
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Wallet {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  // stored in smallest unit (rupiah, integer) to avoid float issues
+  balance   BigInt   @default(0)
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+
+  ledger WalletLedger[]
+}
+
+model WalletLedger {
+  id           String          @id @default(cuid())
+  walletId     String
+  type         WalletLedgerType
+  status       LedgerStatus    @default(ENTRY)
+  amount       BigInt
+  balanceBefore BigInt
+  balanceAfter BigInt
+  referenceType String?        // ORDER / DEPOSIT / REFUND / ADMIN
+  referenceId  String?
+  note         String?
+  createdAt    DateTime        @default(now())
+
+  wallet Wallet @relation(fields: [walletId], references: [id])
+
+  @@index([walletId, createdAt])
+  @@index([referenceType, referenceId])
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  type      ProductType
+  logoUrl   String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  products Product[]
+}
+
+model Provider {
+  id         String   @id @default(cuid())
+  code       String   @unique // DIGIFLAZZ | SOSMEDMEDIA | SIMULATION
+  name       String
+  baseUrl    String?
+  isActive   Boolean  @default(true)
+  priority   Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  products  Product[]
+  mappings  ProviderProductMapping[]
+  transactions ProviderTransaction[]
+  credential ProviderCredential?
+  logs       ProviderLog[]
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  name        String
+  description String?     @db.Text
+  type        ProductType
+  categoryId  String
+  providerId  String?
+  // provider identifier (sku for digiflazz, service id for sosmed)
+  providerSku String?
+  costPrice   Int         @default(0) // harga modal provider (rupiah)
+  sellPrice   Int         @default(0) // harga jual
+  marginPct   Int         @default(0)
+  isActive    Boolean     @default(true)
+  requiresZoneId Boolean  @default(false)
+  // SMM fields
+  minOrder    Int?
+  maxOrder    Int?
+  avgTime     String?
+  imageUrl    String?
+  sortOrder   Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  category    Category  @relation(fields: [categoryId], references: [id])
+  provider    Provider? @relation(fields: [providerId], references: [id])
+  orderItems  OrderItem[]
+  reviews     Review[]
+  orders      Order[]
+  mapping     ProviderProductMapping?
+
+  @@index([categoryId, isActive])
+  @@index([type, isActive])
+}
+
+model ProviderProductMapping {
+  id            String   @id @default(cuid())
+  productId     String   @unique
+  providerId    String
+  providerSku   String
+  lastSyncAt    DateTime?
+  createdAt     DateTime @default(now())
+
+  product  Product  @relation(fields: [productId], references: [id])
+  provider Provider @relation(fields: [providerId], references: [id])
+
+  @@index([providerId])
+}
+
+model Order {
+  id          String   @id @default(cuid())
+  orderNo     String   @unique // human-readable, e.g. NX-...
+  userId      String?
+  guestEmail  String?
+  guestToken  String?  @unique // verifikasi tambahan untuk guest
+  kind        OrderKind
+  status      PaymentStatus  @default(PENDING)
+  fulfillment FulfillmentStatus @default(QUEUED)
+  productId   String
+  quantity    Int      @default(1)
+  // snapshot harga saat order dibuat
+  priceBase   Int
+  priceFee    Int
+  priceDiscount Int    @default(0)
+  priceTotal  Int
+  couponId    String?
+  // input akun game / tautan tujuan
+  accountInput  String   // user id game atau link sosmed
+  accountInput2 String?  // zone id / server id
+  contactEmail String?
+  providerOrderRef String? // id pesanan di provider
+  providerNote String?
+  failReason  String?
+  idempotencyKey String? @unique
+  sentToProviderAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user       User?        @relation(fields: [userId], references: [id])
+  product    Product      @relation(fields: [productId], references: [id])
+  items      OrderItem[]
+  payments   Payment[]
+  transactions ProviderTransaction[]
+  refunds    Refund[]
+  history    OrderHistory[]
+  target     OrderTarget?
+
+  @@index([userId, createdAt])
+  @@index([status, fulfillment])
+}
+
+model OrderItem {
+  id          String @id @default(cuid())
+  orderId     String
+  productId   String
+  name        String
+  quantity    Int
+  unitPrice   Int
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+}
+
+model OrderHistory {
+  id        String   @id @default(cuid())
+  orderId   String
+  field     String
+  fromValue String?
+  toValue   String?
+  note      String?
+  createdAt DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId, createdAt])
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+  orderId         String
+  userId          String?
+  provider        PaymentProvider @default(MIDTRANS)
+  externalId      String?  @unique // midtrans order_id
+  snapToken       String?
+  redirectUrl     String?
+  amount          Int
+  status          PaymentStatus @default(PENDING)
+  rawPayload      String?  @db.Text
+  paidAt          DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  order Order  @relation(fields: [orderId], references: [id])
+  user  User?  @relation(fields: [userId], references: [id])
+
+  @@index([orderId])
+}
+
+model ProviderTransaction {
+  id           String   @id @default(cuid())
+  orderId      String
+  providerId   String?
+  providerRef  String?  // reference/sn/inv dari provider
+  requestPayload String? @db.Text
+  responsePayload String? @db.Text
+  status       ProviderTxStatus @default(SENT)
+  priceCost    Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  order    Order     @relation(fields: [orderId], references: [id])
+  provider Provider? @relation(fields: [providerId], references: [id])
+
+  @@index([orderId])
+}
+
+model Deposit {
+  id        String   @id @default(cuid())
+  userId    String
+  amount    Int
+  status    DepositStatus @default(PENDING)
+  paymentRef String? @unique
+  snapToken String?
+  createdAt DateTime @default(now())
+  paidAt    DateTime?
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+}
+
+model Refund {
+  id        String   @id @default(cuid())
+  orderId   String
+  amount    Int
+  reason    String?
+  status    PaymentStatus @default(PENDING)
+  processedBy String?
+  createdAt DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id])
+
+  @@index([orderId])
+}
+
+model Coupon {
+  id        String     @id @default(cuid())
+  code      String     @unique
+  type      CouponType
+  value     Int
+  minSpend  Int        @default(0)
+  maxDiscount Int?
+  quota     Int        @default(0)
+  used      Int        @default(0)
+  isActive  Boolean    @default(true)
+  expiresAt DateTime?
+  createdAt DateTime   @default(now())
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  body      String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  detail    Json?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([entity, entityId])
+  @@index([userId])
+}
+
+model WebhookEvent {
+  id          String  @id @default(cuid())
+  source      String
+  externalId  String
+  payload     String  @db.Text
+  status      WebhookStatus @default(RECEIVED)
+  note        String?
+  createdAt   DateTime @default(now())
+
+  @@unique([source, externalId])
+  @@index([createdAt])
+}
+
+model IdempotencyRecord {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  scope     String
+  result    String?  @db.Text
+  createdAt DateTime @default(now())
+}
+
+model Setting {
+  key       String   @id
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+enum ProviderConnStatus {
+  NOT_CONFIGURED
+  CONNECTED
+  CONNECTION_FAILED
+}
+
+enum ProviderLogKind {
+  CONNECTION
+  SYNC
+}
+
+// Credential provider terenkripsi AES-256-GCM. TIDAK PERNAH dikirim ke frontend.
+model ProviderCredential {
+  id            String   @id @default(cuid())
+  providerId    String   @unique
+  baseUrl       String?
+  username      String?   // username/customer-id (bukan rahasia, tapi tetap dienkripsi)
+  apiKeyEnc     String?   @db.Text  // AES-256-GCM (iv:tag:ciphertext, base64)
+  apiSecretEnc  String?   @db.Text
+  signatureKeyEnc String? @db.Text
+  environment   String    @default("sandbox") // sandbox | production
+  connStatus    ProviderConnStatus @default(NOT_CONFIGURED)
+  connMessage   String?
+  lastConnectedAt DateTime?
+  lastCheckedAt  DateTime?
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime @default(now())
+
+  provider Provider @relation(fields: [providerId], references: [id])
+}
+
+// Riwayat koneksi & sinkronisasi per provider
+model ProviderLog {
+  id         String   @id @default(cuid())
+  providerId String
+  kind       ProviderLogKind
+  status     String   // CONNECTED | CONNECTION_FAILED | STARTED | SUCCESS | FAILED
+  message    String?  @db.Text
+  detail     Json?
+  createdAt  DateTime @default(now())
+
+  provider Provider @relation(fields: [providerId], references: [id])
+
+  @@index([providerId, createdAt])
+}
+
+enum ReviewStatus {
+  PENDING
+  PUBLISHED
+  REJECTED
+}
+
+// Ulasan produk oleh customer yang memiliki order SUCCESS (divalidasi backend).
+model Review {
+  id        String       @id @default(cuid())
+  productId String
+  userId    String
+  orderId   String       @unique  // 1 order = 1 review
+  rating    Int          // 1..5
+  comment   String?      @db.Text
+  status    ReviewStatus @default(PUBLISHED)
+  createdAt DateTime     @default(now())
+
+  product Product @relation(fields: [productId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@index([productId, status])
+}
+
+// Target pesanan (User ID game / link sosmed / kontak) — dipisah dari Order
+// agar PII tujuan transaksi bisa diaudit terpisah.
+model OrderTarget {
+  id        String   @id @default(cuid())
+  orderId   String   @unique
+  nickname  String?
+  userId    String   // user id game
+  zoneId    String?
+  contact   String?  // email/wa untuk invoice
+  createdAt DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id])
+}

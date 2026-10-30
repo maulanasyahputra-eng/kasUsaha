@@ -1,0 +1,209 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.timestampproedit"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="35" />
+10
+11    <!-- Izin Utama Kamera & Audio (Wajib untuk Perekaman Video) -->
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:5:5-65
+12-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:5:22-62
+13    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+13-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:6:5-71
+13-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:6:22-68
+14
+15    <!-- Izin Lokasi untuk Timestamp GPS -->
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:9:5-79
+16-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:9:22-76
+17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+17-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:10:5-81
+17-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:10:22-78
+18
+19    <!-- Izin Akses Galeri & Penyimpanan (Sesuai Versi Android) -->
+20    <uses-permission
+20-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:13:5-107
+21        android:name="android.permission.READ_EXTERNAL_STORAGE"
+21-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:13:22-77
+22        android:maxSdkVersion="32" />
+22-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:13:78-104
+23    <uses-permission
+23-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:14:5-108
+24        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+24-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:14:22-78
+25        android:maxSdkVersion="28" />
+25-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:14:79-105
+26    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+26-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:15:5-76
+26-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:15:22-73
+27    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+27-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:16:5-75
+27-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:16:22-72
+28
+29    <!-- Fitur Hardware Kamera -->
+30    <uses-feature
+30-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:19:5-21:36
+31        android:name="android.hardware.camera"
+31-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:20:9-47
+32        android:required="false" />
+32-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:21:9-33
+33    <uses-feature
+33-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:22:5-24:36
+34        android:name="android.hardware.camera.autofocus"
+34-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:23:9-57
+35        android:required="false" />
+35-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:24:9-33
+36    <uses-feature
+36-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:25:5-27:36
+37        android:name="android.hardware.microphone"
+37-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:26:9-51
+38        android:required="false" />
+38-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:27:9-33
+39
+40    <queries>
+40-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:29:5-39:15
+41        <intent>
+41-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:30:9-32:18
+42            <action android:name="android.media.action.IMAGE_CAPTURE" />
+42-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:31:13-73
+42-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:31:21-70
+43        </intent>
+44        <intent>
+44-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:33:9-35:18
+45            <action android:name="android.intent.action.GET_CONTENT" />
+45-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:34:13-72
+45-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:34:21-69
+46        </intent>
+47        <intent>
+47-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:36:9-38:18
+48            <action android:name="android.intent.action.OPEN_DOCUMENT" />
+48-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:37:13-74
+48-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:37:21-71
+49        </intent>
+50    </queries>
+51
+52    <permission
+52-->[androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+53        android:name="com.example.timestampproedit.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+53-->[androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+54        android:protectionLevel="signature" />
+54-->[androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+55
+56    <uses-permission android:name="com.example.timestampproedit.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+56-->[androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+56-->[androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+57
+58    <application
+58-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:41:5-70:19
+59        android:allowBackup="true"
+59-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:42:9-35
+60        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+60-->[androidx.core:core:1.15.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\2e090519eb69b5b1f7d7da0f686d7b0d\workspace\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
+61        android:debuggable="true"
+62        android:extractNativeLibs="false"
+63        android:icon="@mipmap/ic_launcher"
+63-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:44:9-43
+64        android:label="TimeStamp Pro Edit"
+64-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:43:9-43
+65        android:roundIcon="@mipmap/ic_launcher_round"
+65-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:45:9-54
+66        android:supportsRtl="true"
+66-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:46:9-35
+67        android:theme="@style/AppTheme" >
+67-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:47:9-40
+68        <provider
+68-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:49:9-57:20
+69            android:name="androidx.core.content.FileProvider"
+69-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:50:13-62
+70            android:authorities="com.example.timestampproedit.fileprovider"
+70-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:51:13-76
+71            android:exported="false"
+71-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:52:13-37
+72            android:grantUriPermissions="true" >
+72-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:53:13-47
+73            <meta-data
+73-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:54:13-56:54
+74                android:name="android.support.FILE_PROVIDER_PATHS"
+74-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:55:17-67
+75                android:resource="@xml/file_paths" />
+75-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:56:17-51
+76        </provider>
+77
+78        <activity
+78-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:59:9-68:20
+79            android:name="com.example.timestampproedit.MainActivity"
+79-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:60:13-41
+80            android:exported="true" >
+80-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:61:13-36
+81            <intent-filter>
+81-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:63:13-66:29
+82                <action android:name="android.intent.action.MAIN" />
+82-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:64:17-69
+82-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:64:25-66
+83
+84                <category android:name="android.intent.category.LAUNCHER" />
+84-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:65:17-77
+84-->D:\TimeStampProEdit_AndroidStudio_Java\app\src\main\AndroidManifest.xml:65:27-74
+85            </intent-filter>
+86        </activity>
+87
+88        <provider
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+89            android:name="androidx.startup.InitializationProvider"
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+90            android:authorities="com.example.timestampproedit.androidx-startup"
+90-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+91            android:exported="false" >
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+92            <meta-data
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+93                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+94                android:value="androidx.startup" />
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+95        </provider>
+96
+97        <receiver
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+98            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+98-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+99            android:directBootAware="false"
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+100            android:enabled="true"
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+101            android:exported="true"
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+102            android:permission="android.permission.DUMP" >
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+103            <intent-filter>
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+104                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+105            </intent-filter>
+106            <intent-filter>
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+107                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+108            </intent-filter>
+109            <intent-filter>
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+110                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+111            </intent-filter>
+112            <intent-filter>
+112-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+113                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\LENOVO\.gradle\caches\9.3.0\transforms\a76136deddc546a08240feca9ea71620\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+114            </intent-filter>
+115        </receiver>
+116    </application>
+117
+118</manifest>

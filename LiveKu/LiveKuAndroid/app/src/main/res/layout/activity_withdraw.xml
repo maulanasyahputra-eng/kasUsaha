@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#0A0A0F">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- HEADER TITLE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tarik Saldo (Withdraw)"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- INFORMASI / CATATAN MINIMAL WITHDRAW -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#161622"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informasi Penarikan"
+                    android:textColor="#FFD700"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minimal penarikan adalah Rp 50.000. Pastikan data rekening atau e-wallet yang dimasukkan sudah benar."
+                    android:textColor="#85859E"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- INPUT 1: JUMLAH PENARIKAN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JUMLAH PENARIKAN (RP)"
+            android:textColor="#85859E"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:layout_marginBottom="6dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#161622"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <EditText
+                android:id="@+id/etWithdrawAmount"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Contoh: 50000"
+                android:inputType="number"
+                android:paddingHorizontal="16dp"
+                android:background="@null"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#505068"
+                android:textSize="15sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- INPUT 2: NAMA BANK / E-WALLET -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAMA BANK / E-WALLET"
+            android:textColor="#85859E"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:layout_marginBottom="6dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#161622"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <EditText
+                android:id="@+id/etBank"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Contoh: BCA / DANA"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:background="@null"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#505068"
+                android:textSize="15sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- INPUT 3: NOMOR REKENING / NO HP -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOMOR REKENING / NO HP"
+            android:textColor="#85859E"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:layout_marginBottom="6dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#161622"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <EditText
+                android:id="@+id/etRekening"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Contoh: 1234567890"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:background="@null"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#505068"
+                android:textSize="15sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- INPUT 4: NAMA PEMILIK REKENING -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAMA PEMILIK REKENING"
+            android:textColor="#85859E"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:layout_marginBottom="6dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="#161622"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <EditText
+                android:id="@+id/etNama"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Contoh: Budi Santoso"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="16dp"
+                android:background="@null"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#505068"
+                android:textSize="15sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- TOMBOL SUBMIT WITHDRAW -->
+        <Button
+            android:id="@+id/btnSubmitWithdraw"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Ajukan Withdraw"
+            android:backgroundTint="#FF2A85"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:stateListAnimator="@null"
+            app:cornerRadius="12dp"/>
+
+    </LinearLayout>
+</ScrollView>

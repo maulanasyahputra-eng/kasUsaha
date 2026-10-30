@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
+
+        android:background="#FFFFFF">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/welcomeText"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="ChatKu"
+
+                android:textColor="#212121"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/phoneText"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="1dp"
+
+                android:text="Nomor: -"
+
+                android:textColor="#8A8A8A"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
+        <!-- LOGOUT -->
+
+        <Button
+            android:id="@+id/logoutButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+
+            android:text="Keluar"
+
+            android:textAllCaps="false"
+
+            android:textColor="#229ED9"
+
+            android:textSize="12sp"
+
+            android:backgroundTint="#E8F4FB" />
+
+    </LinearLayout>
+
+
+    <!-- =====================================================
+         STATUS
+         ===================================================== -->
+
+    <TextView
+        android:id="@+id/statusText"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="7dp"
+
+        android:text="Memuat akun..."
+
+        android:textColor="#4CAF50"
+        android:textSize="12sp" />
+
+
+    <!-- =====================================================
+         DIVIDER
+         ===================================================== -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:background="#E8E8E8" />
+
+
+    <!-- =====================================================
+         SEARCH
+         ===================================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="7dp"
+
+        android:orientation="horizontal"
+
+        android:gravity="center_vertical"
+
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+
+        android:background="#F1F3F5">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="🔍"
+
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/searchEditText"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:layout_marginStart="7dp"
+
+            android:background="@android:color/transparent"
+
+            android:hint="Cari"
+
+            android:singleLine="true"
+
+            android:textColor="#212121"
+
+            android:textColorHint="#8A8A8A"
+
+            android:textSize="15sp"
+
+            android:padding="0dp" />
+
+    </LinearLayout>
+
+
+    <!-- =====================================================
+         CONTENT
+         ===================================================== -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_weight="1">
+
+
+        <!-- =================================================
+             CHAT PAGE
+             ================================================= -->
+
+        <LinearLayout
+            android:id="@+id/chatPage"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+
+            <!-- CHAT HEADER -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+                android:gravity="center_vertical"
+
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+
+                    android:text="Percakapan"
+
+                    android:textColor="#229ED9"
+
+                    android:textSize="15sp"
+
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/conversationCountText"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text=""
+
+                    android:textColor="#999999"
+
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+            <!-- CHAT LIST -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_weight="1">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/conversationRecyclerView"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:clipToPadding="false"
+
+                    android:paddingTop="0dp"
+                    android:paddingBottom="75dp"
+
+                    android:scrollbars="vertical" />
+
+
+                <!-- EMPTY STATE -->
+
+                <LinearLayout
+                    android:id="@+id/emptyStateLayout"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+
+                    android:orientation="vertical"
+
+                    android:padding="30dp"
+
+                    android:visibility="gone">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="💬"
+
+                        android:textSize="42sp" />
+
+
+                    <TextView
+                        android:id="@+id/emptyText"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="12dp"
+
+                        android:text="Belum ada percakapan"
+
+                        android:textColor="#555555"
+
+                        android:textSize="15sp"
+
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="5dp"
+
+                        android:text="Mulai chat dengan teman kamu"
+
+                        android:textColor="#999999"
+
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+
+                <!-- NEW CHAT -->
+
+                <Button
+                    android:id="@+id/newChatButton"
+
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+
+                    android:layout_gravity="bottom|end"
+
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="14dp"
+
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+
+                    android:text="+"
+
+                    android:textColor="#FFFFFF"
+
+                    android:textSize="28sp"
+
+                    android:textStyle="normal"
+
+                    android:backgroundTint="#229ED9" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+        <!-- =================================================
+             KONTAK PAGE
+             ================================================= -->
+
+        <LinearLayout
+            android:id="@+id/contactPage"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+
+            android:visibility="gone">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+
+                android:gravity="center_vertical"
+
+                android:paddingStart="18dp"
+
+                android:text="Kontak"
+
+                android:textColor="#212121"
+
+                android:textSize="22sp"
+
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+
+                android:gravity="center_vertical"
+
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+
+                android:background="?android:attr/selectableItemBackground">
+
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+
+                    android:gravity="center"
+
+                    android:text="+"
+
+                    android:textColor="#FFFFFF"
+
+                    android:textSize="25sp"
+
+                    android:background="@drawable/bg_avatar_circle" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="14dp"
+
+                    android:text="Tambah Kontak"
+
+                    android:textColor="#229ED9"
+
+                    android:textSize="16sp"
+
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/contactEmptyText"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+
+                android:layout_marginTop="70dp"
+
+                android:text="Belum ada kontak"
+
+                android:textColor="#999999"
+
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <!-- =================================================
+             PANGGILAN PAGE
+             ================================================= -->
+
+        <LinearLayout
+            android:id="@+id/callPage"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+
+            android:visibility="gone">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+
+                android:gravity="center_vertical"
+
+                android:paddingStart="18dp"
+
+                android:text="Panggilan"
+
+                android:textColor="#212121"
+
+                android:textSize="22sp"
+
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+
+                android:gravity="center_vertical"
+
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp">
+
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+
+                    android:gravity="center"
+
+                    android:text="☎"
+
+                    android:textColor="#FFFFFF"
+
+                    android:textSize="21sp"
+
+                    android:background="@drawable/bg_avatar_circle" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginStart="14dp"
+
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Belum ada panggilan"
+
+                        android:textColor="#444444"
+
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="3dp"
+
+                        android:text="Riwayat panggilan akan muncul di sini"
+
+                        android:textColor="#999999"
+
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- =================================================
+             PENGATURAN PAGE
+             ================================================= -->
+
+        <ScrollView
+            android:id="@+id/settingsPage"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:fillViewport="true"
+
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+
+                <!-- SETTINGS HEADER -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="18dp"
+
+                    android:text="Pengaturan"
+
+                    android:textColor="#212121"
+
+                    android:textSize="22sp"
+
+                    android:textStyle="bold" />
+
+
+                <!-- PROFILE -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="78dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+
+                    android:background="?android:attr/selectableItemBackground">
+
+
+                    <ImageView
+                        android:id="@+id/settingsAvatar"
+
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+
+                        android:src="@drawable/ic_launcher_foreground"
+
+                        android:scaleType="centerCrop"
+
+                        android:background="@drawable/bg_avatar_circle" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginStart="14dp"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/settingsName"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Pengguna ChatKu"
+
+                            android:textColor="#212121"
+
+                            android:textSize="17sp"
+
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/settingsPhone"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="3dp"
+
+                            android:text="Nomor: -"
+
+                            android:textColor="#888888"
+
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!-- SETTINGS ITEMS -->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+
+                    android:background="#F1F3F5" />
+
+
+                <TextView
+                    android:id="@+id/profileSettingsButton"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="20dp"
+
+                    android:text="👤    Profil"
+
+                    android:textColor="#222222"
+
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:id="@+id/notificationSettingsButton"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="20dp"
+
+                    android:text="🔔    Notifikasi"
+
+                    android:textColor="#222222"
+
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:id="@+id/privacySettingsButton"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="20dp"
+
+                    android:text="🔒    Privasi dan Keamanan"
+
+                    android:textColor="#222222"
+
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:id="@+id/dataSettingsButton"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="20dp"
+
+                    android:text="📱    Data dan Penyimpanan"
+
+                    android:textColor="#222222"
+
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:id="@+id/aboutSettingsButton"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="20dp"
+
+                    android:text="ℹ    Tentang ChatKu"
+
+                    android:textColor="#222222"
+
+                    android:textSize="15sp" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+
+                    android:background="#F1F3F5" />
+
+
+                <TextView
+                    android:id="@+id/logoutSettingsButton"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="20dp"
+
+                    android:text="🚪    Keluar"
+
+                    android:textColor="#E53935"
+
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
+
+
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+         ===================================================== -->
+
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+
+        android:orientation="horizontal"
+
+        android:gravity="center"
+
+        android:background="#FFFFFF"
+
+        android:elevation="8dp">
+
+
+        <!-- CHAT -->
+
+        <LinearLayout
+            android:id="@+id/navChat"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:orientation="vertical"
+
+            android:background="?android:attr/selectableItemBackground">
+
+
+            <TextView
+                android:id="@+id/navChatIcon"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="💬"
+
+                android:textSize="21sp" />
+
+
+            <TextView
+                android:id="@+id/navChatText"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="2dp"
+
+                android:text="Chat"
+
+                android:textColor="#229ED9"
+
+                android:textSize="11sp"
+
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <!-- KONTAK -->
+
+        <LinearLayout
+            android:id="@+id/navContact"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:orientation="vertical"
+
+            android:background="?android:attr/selectableItemBackground">
+
+
+            <TextView
+                android:id="@+id/navContactIcon"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="👥"
+
+                android:textSize="21sp" />
+
+
+            <TextView
+                android:id="@+id/navContactText"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="2dp"
+
+                android:text="Kontak"
+
+                android:textColor="#888888"
+
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
+        <!-- PANGGILAN -->
+
+        <LinearLayout
+            android:id="@+id/navCall"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:orientation="vertical"
+
+            android:background="?android:attr/selectableItemBackground">
+
+
+            <TextView
+                android:id="@+id/navCallIcon"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="📞"
+
+                android:textSize="21sp" />
+
+
+            <TextView
+                android:id="@+id/navCallText"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="2dp"
+
+                android:text="Panggilan"
+
+                android:textColor="#888888"
+
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
+        <!-- PENGATURAN -->
+
+        <LinearLayout
+            android:id="@+id/navSettings"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:orientation="vertical"
+
+            android:background="?android:attr/selectableItemBackground">
+
+
+            <TextView
+                android:id="@+id/navSettingsIcon"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="⚙"
+
+                android:textSize="21sp" />
+
+
+            <TextView
+                android:id="@+id/navSettingsText"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="2dp"
+
+                android:text="Pengaturan"
+
+                android:textColor="#888888"
+
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

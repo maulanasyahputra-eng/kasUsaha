@@ -1,0 +1,648 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+    background: #0b0e13;
+    color: #f5f5f5;
+}
+
+button {
+    font-family: inherit;
+}
+
+.admin-layout {
+    min-height: 100vh;
+    display: flex;
+    background: #0b0e13;
+}
+
+
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #11151c;
+    border-right: 1px solid #252b35;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.logo {
+    height: 80px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #252b35;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #6c5ce7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.logo strong {
+    display: block;
+    font-size: 19px;
+}
+
+.logo span {
+    display: block;
+    font-size: 11px;
+    color: #858b96;
+    margin-top: 3px;
+}
+
+.sidebar nav {
+    padding: 20px 12px;
+}
+
+.nav-item {
+    width: 100%;
+    padding: 13px 15px;
+    margin-bottom: 6px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #9298a3;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-item span {
+    width: 22px;
+}
+
+.nav-item:hover {
+    background: #1b2029;
+    color: white;
+}
+
+.nav-item.active {
+    background: #6c5ce7;
+    color: white;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 18px;
+    border-top: 1px solid #252b35;
+}
+
+.admin-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-status strong {
+    display: block;
+    font-size: 12px;
+}
+
+.admin-status span {
+    display: block;
+    font-size: 10px;
+    color: #777e89;
+    margin-top: 3px;
+}
+
+.online-dot {
+    width: 9px;
+    height: 9px;
+    background: #00d084;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow:
+        0 0 10px rgba(
+            0,
+            208,
+            132,
+            0.7
+        );
+}
+
+
+/* ========================================
+   MAIN
+======================================== */
+
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
+
+.topbar {
+    height: 80px;
+    border-bottom: 1px solid #252b35;
+    background: #11151c;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar span {
+    display: block;
+    color: #777e89;
+    font-size: 11px;
+}
+
+.topbar strong {
+    display: block;
+    margin-top: 4px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.live-badge {
+    background: rgba(
+        0,
+        208,
+        132,
+        0.12
+    );
+    color: #00d084 !important;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 11px !important;
+}
+
+.admin-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #6c5ce7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.content {
+    padding: 30px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    margin: 0;
+    font-size: 27px;
+}
+
+.page-title p {
+    margin: 7px 0 0;
+    color: #777e89;
+    font-size: 13px;
+}
+
+.refresh-button {
+    padding: 10px 16px;
+    border: 1px solid #343b48;
+    background: #181d25;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.refresh-button:hover {
+    background: #252b35;
+}
+
+
+/* ========================================
+   STATS
+======================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.stat-card {
+    background: #151920;
+    border: 1px solid #292f39;
+    border-radius: 11px;
+    padding: 21px;
+}
+
+.stat-card span {
+    color: #858b96;
+    font-size: 12px;
+}
+
+.stat-card strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.stat-card small {
+    display: block;
+    color: #666d78;
+    margin-top: 8px;
+    font-size: 11px;
+}
+
+.warning-card {
+    border-color: #574a27;
+}
+
+
+/* ========================================
+   PANEL
+======================================== */
+
+.panel {
+    background: #151920;
+    border: 1px solid #292f39;
+    border-radius: 11px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 21px;
+    border-bottom: 1px solid #292f39;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-header h2 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.panel-header p {
+    margin: 5px 0 0;
+    color: #707783;
+    font-size: 12px;
+}
+
+
+/* ========================================
+   SYSTEM
+======================================== */
+
+.system-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+}
+
+.system-item {
+    padding: 20px;
+    border-right: 1px solid #292f39;
+    position: relative;
+}
+
+.system-item:last-child {
+    border-right: 0;
+}
+
+.system-item span {
+    display: block;
+    color: #777e89;
+    font-size: 11px;
+}
+
+.system-item strong {
+    display: block;
+    margin-top: 7px;
+    font-size: 13px;
+}
+
+.system-item .online-dot {
+    position: absolute;
+    right: 20px;
+    top: 23px;
+}
+
+
+/* ========================================
+   TABLE
+======================================== */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+th {
+    text-align: left;
+    padding: 15px 18px;
+    color: #737a85;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid #292f39;
+}
+
+td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #222831;
+    color: #c7cbd2;
+    font-size: 12px;
+}
+
+td strong {
+    color: white;
+}
+
+td small {
+    display: block;
+    color: #6f7681;
+    margin-top: 4px;
+}
+
+tr:hover td {
+    background: #191e26;
+}
+
+.empty {
+    text-align: center;
+    color: #737a85;
+    padding: 40px;
+}
+
+
+/* ========================================
+   STATUS
+======================================== */
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 5px;
+    background: #252a32;
+    color: #aeb4bd;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.status.success {
+    background: rgba(
+        0,
+        208,
+        132,
+        0.12
+    );
+    color: #00d084;
+}
+
+.status.pending {
+    background: rgba(
+        255,
+        193,
+        7,
+        0.12
+    );
+    color: #ffc107;
+}
+
+.status.danger {
+    background: rgba(
+        255,
+        71,
+        87,
+        0.12
+    );
+    color: #ff4757;
+}
+
+
+/* ========================================
+   ACTION
+======================================== */
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.action-buttons button {
+    border: 0;
+    padding: 7px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.approve-button {
+    background: #00a878;
+}
+
+.approve-button:hover {
+    background: #00c48c;
+}
+
+.reject-button {
+    background: #d63031;
+}
+
+.reject-button:hover {
+    background: #ed3839;
+}
+
+.action-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* ========================================
+   ALERT
+======================================== */
+
+.alert {
+    background: #171d26;
+    border: 1px solid #343d4c;
+    border-radius: 8px;
+    padding: 13px 15px;
+    margin-bottom: 20px;
+    color: #ddd;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert button {
+    border: 0;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+/* ========================================
+   LOADING
+======================================== */
+
+.loading-bar {
+    background: #6c5ce7;
+    padding: 7px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 11px;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (
+    max-width: 1100px
+) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+
+@media (
+    max-width: 800px
+) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .logo {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .logo > div:last-child {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+        padding: 13px 5px;
+        font-size: 0;
+    }
+
+    .nav-item span {
+        font-size: 16px;
+    }
+
+    .sidebar-bottom {
+        padding: 10px;
+    }
+
+    .admin-status div {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .system-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .system-item {
+        border-right: 0;
+        border-bottom: 1px solid #292f39;
+    }
+
+    .system-item:last-child {
+        border-bottom: 0;
+    }
+
+}
+
+
+@media (
+    max-width: 550px
+) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .page-title {
+        align-items: flex-start;
+    }
+
+}

@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap_ic_launcher.xml.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap\\ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.timestampproedit.app-debug-11:/xml_file_paths.xml.flat",
+        "source": "com.example.timestampproedit.app-main-13:/xml/file_paths.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-debug-11:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\9.3.0\\com.example.timestampproedit.app-main-13:\\xml\\file_paths.xml"
+    }
+]
