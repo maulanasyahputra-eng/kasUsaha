@@ -59,6 +59,13 @@ router.get('/dashboard', async (_req, res, next) => {
       topProducts: topProducts.map((r) => ({ name: r.name, count: Number(r.cnt), total: Number(r.total) })),
       topCustomers: topCustomers.map((r) => ({ name: r.name, email: r.email, count: Number(r.cnt), total: Number(r.total) })),
       byCategory: byCategory.map((r) => ({ name: r.name, count: Number(r.cnt), total: Number(r.total) })),
+      recentOrders: await prisma.order.findMany({
+        orderBy: { createdAt: 'desc' }, take: 8,
+        select: { id: true, orderNo: true, status: true, fulfillment: true, priceTotal: true, createdAt: true, product: { select: { name: true } } },
+      }),
+      providerHealth: (await prisma.provider.findMany({ include: { credential: { select: { connStatus: true, lastConnectedAt: true } } } }))
+        .map((p) => ({ code: p.code, name: p.name, isActive: p.isActive, connStatus: p.credential?.connStatus ?? 'NOT_CONFIGURED', lastConnectedAt: p.credential?.lastConnectedAt ?? null })),
+      activeProducts: await prisma.product.count({ where: { isActive: true } }),
     });
   } catch (e) { next(e); }
 });
@@ -71,10 +78,18 @@ router.get('/orders', async (req, res, next) => {
     const status = String(req.query.status ?? '');
     const fulfillment = String(req.query.fulfillment ?? '');
     const search = String(req.query.search ?? '').trim();
+    const dateFrom = String(req.query.dateFrom ?? '');
+    const dateTo = String(req.query.dateTo ?? '');
     const where: Record<string, unknown> = {};
     if (status) where.status = status;
     if (fulfillment) where.fulfillment = fulfillment;
     if (search) where.orderNo = { contains: search };
+    if (dateFrom || dateTo) {
+      where.createdAt = {
+        ...(dateFrom ? { gte: new Date(dateFrom) } : {}),
+        ...(dateTo ? { lte: new Date(`${dateTo}T23:59:59`) } : {}),
+      };
+    }
     const [total, orders] = await Promise.all([
       prisma.order.count({ where }),
       prisma.order.findMany({
@@ -107,6 +122,25 @@ router.get('/orders/:id', async (req, res, next) => {
     });
     if (!order) throw new AppError(404, 'NOT_FOUND', 'Order tidak ditemukan.');
     res.json({ order });
+  } catch (e) { next(e); }
+});
+
+// Retry pesanan gagal — HANYA fulfillment FAILED/UNKNOWN & PAID, dengan idempotency via sentToProviderAt reset
+router.post('/orders/:id/retry', async (req, res, next) => {
+  try {
+    const result = await prisma.$transaction(async (tx) => {
+      const locked = await tx.$queryRaw<{ id: string; status: string; fulfillment: string; sentToProviderAt: Date | null }[]>`
+        SELECT id, status, fulfillment, sentToProviderAt FROM \`Order\` WHERE id = ${req.params.id} FOR UPDATE`;
+      const o = locked[0];
+      if (!o) throw new AppError(404, 'NOT_FOUND', 'Order tidak ditemukan.');
+      if (o.status !== 'PAID') throw new AppError(409, 'NOT_PAID', 'Retry hanya untuk order yang sudah dibayar.');
+      if (!['FAILED', 'UNKNOWN'].includes(o.fulfillment)) throw new AppError(409, 'NOT_RETRYABLE', 'Hanya order FAILED/UNKNOWN yang dapat di-retry.');
+      await tx.order.update({ where: { id: o.id }, data: { fulfillment: 'QUEUED', sentToProviderAt: null, failReason: null } });
+      await tx.orderHistory.create({ data: { orderId: o.id, field: 'retry', note: `Admin me-retry pengiriman ke provider (sebelumnya: ${o.fulfillment}).` } });
+      return { ok: true };
+    }, { timeout: 15000 });
+    await prisma.auditLog.create({ data: { userId: req.user!.id, action: 'ORDER_RETRY', entity: 'Order', entityId: req.params.id } });
+    res.json(result);
   } catch (e) { next(e); }
 });
 

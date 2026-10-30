@@ -79,6 +79,14 @@ export default function AdminOrders() {
     },
     onError: (e) => setToast({ msg: apiErrorMessage(e), type: "error" }),
   });
+  const retry = useMutation({
+    mutationFn: async (id: string) => (await api.post(`/admin/orders/${id}/retry`)).data,
+    onSuccess: () => {
+      setToast({ msg: "Order masuk antrean ulang dengan idempotency guard.", type: "success" });
+      qc.invalidateQueries({ queryKey: ["admin-orders"] });
+    },
+    onError: (e) => setToast({ msg: apiErrorMessage(e), type: "error" }),
+  });
 
   return (
     <div className="space-y-4">
@@ -162,6 +170,16 @@ export default function AdminOrders() {
                   >
                     Re-check
                   </button>
+                  {["FAILED", "UNKNOWN"].includes(o.fulfillment) && o.status === "PAID" && (
+                    <button
+                      className="btn-ghost !py-1.5 text-xs !text-amber-300"
+                      onClick={() => {
+                        if (confirm(`Retry kirim order ${o.orderNo} ke provider?`)) retry.mutate(o.id);
+                      }}
+                    >
+                      Retry
+                    </button>
+                  )}
                 </div>
               </div>
               {o.failReason && (

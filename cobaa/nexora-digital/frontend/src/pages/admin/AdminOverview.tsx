@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../lib/api";
-import { rupiah } from "../../components/ui";
+import { rupiah, StatusBadge } from "../../components/ui";
+import { Link } from "react-router-dom";
 
 interface Dash {
   totalTransactions: number;
@@ -15,10 +16,13 @@ interface Dash {
   customers: number;
   depositTotal: number;
   depositCount: number;
+  activeProducts: number;
   chart: { date: string; total: number; count: number }[];
   topProducts: { name: string; count: number; total: number }[];
   topCustomers: { name: string; email: string; count: number; total: number }[];
   byCategory: { name: string; count: number; total: number }[];
+  recentOrders: { id: string; orderNo: string; status: string; fulfillment: string; priceTotal: number; createdAt: string; product: { name: string } }[];
+  providerHealth: { code: string; name: string; isActive: boolean; connStatus: string; lastConnectedAt: string | null }[];
 }
 
 export default function AdminOverview() {
@@ -67,6 +71,7 @@ export default function AdminOverview() {
           "text-fuchsia-300",
         )}
         {stat("Customer Terdaftar", dash.customers)}
+        {stat("Produk Aktif", dash.activeProducts)}
         {stat("Deposit Masuk", rupiah(dash.depositTotal), "text-cyan-300")}
         {stat("Jumlah Deposit", dash.depositCount)}
       </div>
@@ -94,6 +99,38 @@ export default function AdminOverview() {
               <span className="text-[10px] text-slate-500">
                 {new Date(c.date).getDate()}
               </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Recent orders + provider health */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        <div className="glass-card divide-y divide-white/5">
+          <p className="p-5 pb-3 text-sm font-semibold text-white">Pesanan Terbaru</p>
+          {(dash.recentOrders ?? []).length === 0 && <p className="p-5 text-sm text-zinc-500">Belum ada pesanan.</p>}
+          {(dash.recentOrders ?? []).map((o) => (
+            <Link key={o.id} to={`/admin/orders`} className="flex items-center justify-between gap-3 px-5 py-3 text-sm transition hover:bg-white/[0.04]">
+              <div className="min-w-0">
+                <p className="truncate font-medium text-white">{o.product.name}</p>
+                <p className="text-xs text-zinc-500">{o.orderNo} · {new Date(o.createdAt).toLocaleString("id-ID")}</p>
+              </div>
+              <div className="flex shrink-0 items-center gap-2">
+                <span>{rupiah(o.priceTotal)}</span>
+                <StatusBadge status={o.status} />
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="glass-card divide-y divide-white/5">
+          <p className="p-5 pb-3 text-sm font-semibold text-white">Status Provider</p>
+          {(dash.providerHealth ?? []).map((p) => (
+            <div key={p.code} className="flex items-center justify-between gap-3 px-5 py-3 text-sm">
+              <span className="text-zinc-300">{p.name}</span>
+              <div className="flex items-center gap-2">
+                <StatusBadge status={p.connStatus === "CONNECTED" ? "SUCCESS" : p.connStatus === "CONNECTION_FAILED" ? "FAILED" : "UNKNOWN"} />
+                {p.lastConnectedAt && <span className="text-xs text-zinc-600">{new Date(p.lastConnectedAt).toLocaleString("id-ID")}</span>}
+              </div>
             </div>
           ))}
         </div>
